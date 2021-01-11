@@ -1,0 +1,105 @@
+module.exports = {
+  title: 'Docs Aviônica',
+  tagline: 'Documentação 2021',
+  url: 'https://gabrielaleks.github.io',
+  baseUrl: '/gabrielaleks.github.io/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/rocketslogo.png',
+  organizationName: 'gabrielaleks', // Usually your GitHub org/user name.
+  projectName: 'gabrielaleks.github.io', // Usually your repo name.
+  themeConfig: {
+    navbar: {
+      title: 'Documentação da Aviônica',
+      logo: {
+        alt: 'My Site Logo',
+        src: 'img/rocketslogo.png',
+      },
+      items: [
+        {
+          to: 'docs/',
+          activeBasePath: 'docs',
+          label: 'Docs',
+          position: 'left',
+        }
+        // {to: 'blog', label: 'Blog', position: 'left'},
+        // {
+        //   href: 'https://github.com/facebook/docusaurus',
+        //   label: 'GitHub',
+        //   position: 'right',
+        // },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Docs',
+          items: [
+            {
+              label: 'Reuniões',
+              to: 'docs/',
+            },
+            {
+              label: 'Software',
+              to: 'docs/aurorav2/software/protocolos/i2c',
+            },
+            {
+              label: 'Hardware',
+              to: 'docs/aurorav2/hardware/altium/drc',
+            },
+          ],
+        },
+        {
+          title: 'Equipe',
+          items: [
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/nwE7RkPSpk',
+            },
+            {
+              label: 'Github',
+              href: 'https://github.com/orgs/minervarockets/teams',
+            },
+            {
+              label: 'Slack',
+              href: 'https://minervarockets.slack.com/',
+            },
+          ],
+        },
+        {
+          title: 'Mais',
+          items: [
+            {
+              label: 'Site',
+              href: 'https://www.minervarockets.poli.ufrj.br/',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Minerva Rockets`,
+    },
+  },
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Please change this to your repo.
+          editUrl:
+            'https://github.com/facebook/docusaurus/edit/master/website/',
+        },
+        blog: {
+          showReadingTime: true,
+          // Please change this to your repo.
+          editUrl:
+            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      },
+    ],
+  ],
+};
