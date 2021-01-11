@@ -8,7 +8,11 @@ import styles from './styles.module.css';
 
 const features = [
     {
-        title: 'Reuniões',
+        title: (
+          <a href="docs/">
+          Reuniões
+          </a>
+        ),
         imageUrl: 'img/undraw_meeting.svg',
         description: (
           <>
@@ -17,7 +21,11 @@ const features = [
         ),
     },
     {
-        title: 'Software',
+        title: (
+          <a href="docs/aurorav2/software/protocolos/i2c">
+            Software
+          </a>
+        ),
         imageUrl: 'img/undraw_software.svg',
         description: (
         <>
@@ -26,11 +34,15 @@ const features = [
         ),
     },
     {
-        title: 'Hardware',
+        title: (
+          <a href="docs/aurorav2/hardware/altium/drc">
+            Hardware
+          </a>
+        ),
         imageUrl: 'img/undraw_hardware.svg',
         description: (
         <>
-        Boas práticas do Altium; esquemáticos e PCBs...
+        Boas práticas do Altium; esquemáticos, PCBs...
         </>
         ),
     }
@@ -57,7 +69,7 @@ function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Documentação da Aviônica | Minerva Rockets">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
@@ -90,5 +102,8 @@ function Home() {
     </Layout>
   );
 }
+
+// var a = document.getElementsByClassName('featureImage_src-pages-');
+// console.log(a[0]);
 
 export default Home;
