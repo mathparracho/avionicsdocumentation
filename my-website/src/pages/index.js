@@ -103,7 +103,4 @@ function Home() {
   );
 }
 
-// var a = document.getElementsByClassName('featureImage_src-pages-');
-// console.log(a[0]);
-
 export default Home;
