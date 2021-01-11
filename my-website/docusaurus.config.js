@@ -80,6 +80,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Minerva Rockets`,
     },
     image: 'img/rocketslogo.png',
+    hideableSidebar: true,
   },
   presets: [
     [
