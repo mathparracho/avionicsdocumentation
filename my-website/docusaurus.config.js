@@ -2,12 +2,12 @@ module.exports = {
   title: 'Docs Aviônica',
   tagline: 'Documentação 2021',
   url: 'https://gabrielaleks.github.io',
-  baseUrl: '/gabrielaleks.github.io/',
+  baseUrl: '/avionicsdocumentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/rocketslogo.png',
   organizationName: 'gabrielaleks', // Usually your GitHub org/user name.
-  projectName: 'gabrielaleks.github.io', // Usually your repo name.
+  projectName: 'avionicsdocumentation', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Documentação da Aviônica',
