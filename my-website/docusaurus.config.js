@@ -79,6 +79,7 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Minerva Rockets`,
     },
+    image: 'img/rocketslogo.png',
   },
   presets: [
     [
@@ -88,7 +89,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/gabrielaleks/avionicsdocumentation/edit/master/my-website/',
         },
         blog: {
           showReadingTime: true,
