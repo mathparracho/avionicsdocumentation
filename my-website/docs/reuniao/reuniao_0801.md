@@ -46,13 +46,11 @@ slug: /
 ### Daniel
 - Instalar PlatformIO e vê se funciona
 - Ver sobre regulador de tensão antes do MOSFET 
-
-### Gabriel
-- Ver sobre documentação
-- Elaborar cronograma semanal do Aurora e do Quimera
-- Ver sobre câmeras e Skibs 
-
 ### Fábio
 - Pesquisar sobre I2C, SPI, Serial
 - Ver sobre Arduino
 - Instalar PlatformIO
+### Gabriel
+- Ver sobre documentação
+- Elaborar cronograma semanal do Aurora e do Quimera
+- Ver sobre câmeras e Skibs 
