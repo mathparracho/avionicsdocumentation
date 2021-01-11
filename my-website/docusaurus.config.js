@@ -54,8 +54,12 @@ module.exports = {
           title: 'Equipe',
           items: [
             {
-              label: 'Discord',
-              href: 'https://discord.gg/nwE7RkPSpk',
+              label: 'Drive Aurora v2',
+              href: 'https://drive.google.com/drive/folders/1wKmspL46cDf3ZiCs6gtNX4kgUeMaifdQ',
+            },
+            {
+              label: 'Drive Quimera',
+              href: 'https://drive.google.com/drive/folders/1PdMzJ-8ejoUx9HsQBAT91qSjCtS1ZxnX',
             },
             {
               label: 'Github',
