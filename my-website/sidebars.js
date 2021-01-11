@@ -4,7 +4,7 @@ module.exports = {
             Reuniões: ['reuniao/0801'],
         },
         {
-            Aurora_v2: [
+            'Aurora v2': [
                 {
                     Software: [ 
                         {
@@ -32,14 +32,14 @@ module.exports = {
                 {
                     Software: [
                         {
-                        AirBreak: ['quimera/software/airbreak/algoritmo'],
+                        'Air Break': ['quimera/software/airbreak/algoritmo'],
                         }
                     ],
                 },
                 {
                     Hardware: [
                         {
-                        Tubo_de_Pitot: ['quimera/hardware/tubodepitot/sensores'],
+                        'Tubo de Pitot': ['quimera/hardware/tubodepitot/sensores'],
                         }
                     ],
                 },
