@@ -68,7 +68,7 @@ function Home() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      title={`${siteConfig.title}`}
+      title="Home"
       description="Documentação da Aviônica | Minerva Rockets">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
