@@ -44,3 +44,12 @@
 .footer__links {
     text-align: center;
 }
+
+.markdown ul li p {
+    margin-bottom: 0;
+}
+
+.markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
