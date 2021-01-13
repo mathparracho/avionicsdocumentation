@@ -69,6 +69,10 @@ module.exports = {
               label: 'Slack',
               href: 'https://minervarockets.slack.com/',
             },
+            {
+              label: 'Clickup',
+              href: 'https://app.clickup.com/3004498/v/l/f/3168746?pr=3007293',
+            },
           ],
         },
         {
@@ -77,6 +81,14 @@ module.exports = {
             {
               label: 'Site',
               href: 'https://www.minervarockets.poli.ufrj.br/',
+            },
+            {
+              label: 'Instagram',
+              href: 'https://www.instagram.com/minervarockets/',
+            },
+            {
+              label: 'Linkedin',
+              href: 'https://www.linkedin.com/company/minerva-rockets/',
             },
           ],
         },
