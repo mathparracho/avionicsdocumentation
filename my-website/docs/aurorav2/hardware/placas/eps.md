@@ -29,7 +29,7 @@ Os componentes da placa são:
 | U3V709                    |       1       | Step-up 3.7V -> 9V |
 | LM7085M                   |       1       | Step-down 9V -> 5V |
 | LD1117V33                 |       1       | Step-down 9V -> 3.3V |
-| Resistor                  |       1       | 1x 10KΩ |
+| Resistor                  |       1       | 1x 10kΩ |
 | Capacitor                 |       5       | 1x 33uF, 1x 0.22uF, 1x 0.1uF, 1x 100uF, 1x 10uF |
 
 ## Esquemático
