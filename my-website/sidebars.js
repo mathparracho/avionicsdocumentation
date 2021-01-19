@@ -18,7 +18,11 @@ module.exports = {
                             Altium: ['aurorav2/hardware/altium/drc'],
                         },
                         {
-                            Placas: ['aurorav2/hardware/placas/eps', 'aurorav2/hardware/placas/cdhs', 'aurorav2/hardware/placas/rec', 'aurorav2/hardware/placas/cam'],
+                            Placas: ['aurorav2/hardware/placas/eps', 'aurorav2/hardware/placas/cdhs', 'aurorav2/hardware/placas/rec', 'aurorav2/hardware/placas/cam',
+                                {
+                                    Integração: ['aurorav2/hardware/placas/integracao/epscdhs']
+                                } 
+                            ],
                         },
                         {
                             Fresadora: ['aurorav2/hardware/fresadora/dicas'],
