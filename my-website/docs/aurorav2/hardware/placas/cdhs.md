@@ -38,3 +38,17 @@ Os componentes da placa são:
 
 ## PCB
 ![img](../../../../static/img/docs/hardware/cdhs_pcb.png)
+
+## Testes no protótipo
+### Componentes soldados
+Para validar o CDHS antes de mandar fabricar, nós utilizamos a fresa do laboratório para fabricar um protótipo. Por limitações dos tamanhos de placas que tínhamos e da fresadora, esse protótipo tem dimensões 87x87. Abaixo estão imagens da placa após todos os componentes terem sido soldados.
+
+#### Frente
+![img](../../../../static/img/docs/hardware/cdhs_protfront.jpg)
+
+#### Trás
+![img](../../../../static/img/docs/hardware/cdhs_protback.jpg)
+
+### Continuidade
+Testamos a continuidade das linhas de potência que alimentam o teensy e os sensores. O único problema encontrado foi a entrada de 3v3 no GY-91, que havia sido feita no pino "Vin" mas deve ser feita no pino "3v3". Também testamos a comunicação dos planos de ground. Como são muitos grounds diferentes e corremos o risco de esquecer algum nesse teste, uma boa estratégia é apertar ctrl+shift e selecionar algum pino de ground na Board no Altium. Dessa maneira, todos os grounds ficarão destacados e podemos checá-los um a um. Nenhum problema foi encontrado nos planos de ground. Além disso, foi testada a continuidade para os pinos de sinal. Todos eles estão corretos, a única exceção sendo o pino de sck. A trilha desse pino chega no teensy pela layer de cima, enquanto que a solda foi feita na layer de baixo. Um jumper foi soldado na placa de forma a corrigir esse erro e uma via foi colocada no projeto da board.
+

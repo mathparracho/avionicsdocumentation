@@ -37,3 +37,31 @@ Os componentes da placa são:
 
 ## PCB
 ![img](../../../../static/img/docs/hardware/eps_pcb.png)
+
+## Testes no protótipo
+### Componentes soldados
+Para validar o EPS antes de mandar fabricar, nós utilizamos a fresa do laboratório para fabricar um protótipo. Por limitações dos tamanhos de placas que tínhamos e da fresadora, esse protótipo tem dimensões 87x87. Abaixo estão imagens da placa após todos os componentes terem sido soldados.
+
+#### Frente
+![img](../../../../static/img/docs/hardware/eps_protfront.jpg)
+
+#### Trás
+![img](../../../../static/img/docs/hardware/eps_protback.jpg)
+
+### Continuidade
+Testes de continuidade foram executados na EPS buscando encontrar trilhas mal-comunicadas e planos de ground isolados. Todas as trilhas estão corretas, porém a seção de ground envolvida no regulador de 3v3 não se comunicava com o resto. Para resolver isso foi soldado um jumper. Uma via comunicando esse plano de ground foi adicionada no projeto.
+
+![img](../../../../static/img/docs/hardware/eps_jumper.jpg)
+
+### Linhas de potência
+Temos 3 linhas de potência sendo geradas no EPS a partir dos reguladores de 
+tensão: 3v3, 5v e 9v. Verificamos que elas estão de fato sendo geradas.
+
+#### 3v3
+![img](../../../../static/img/docs/hardware/eps_3v3.jpg)
+
+#### 5v
+![img](../../../../static/img/docs/hardware/eps_5v.jpg)
+
+#### 9v
+![img](../../../../static/img/docs/hardware/eps_9v.jpg)

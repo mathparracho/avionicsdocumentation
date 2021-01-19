@@ -43,3 +43,5 @@ Como os altímetros COTS são alimentados com 7.4V, outra placa foi adicionada. 
 
 ### REC_EPS
 ![img](../../../../static/img/docs/hardware/receps_pcb.png)
+
+## Testes no Protótipo
