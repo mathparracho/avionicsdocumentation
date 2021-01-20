@@ -71,7 +71,7 @@ module.exports = {
             },
             {
               label: 'Clickup',
-              href: 'https://app.clickup.com/3004498/v/l/f/3168746?pr=3007293',
+              href: 'https://app.clickup.com/3004498/v/f/3168746/3007293?pr=3007293',
             },
           ],
         },
