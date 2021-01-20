@@ -1,7 +1,7 @@
 module.exports = {
     docs: [
         {
-            Reuniões: ['reuniao/0801r', 'reuniao/1301r'],
+            Reuniões: ['reuniao/0801r', 'reuniao/1301r', 'reuniao/2001r'],
         },
         {
             'Aurora v2': [
