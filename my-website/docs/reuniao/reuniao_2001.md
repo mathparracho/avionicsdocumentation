@@ -19,21 +19,21 @@ sidebar_label: 20/01/21
 - Viu sobre solenóides de NOX (preço mais caro).
 
 ### Gabriel
-- Feitos alguns testes e identificação de problemas nas placas.
+- Feito identificação e solução de erros nas placas; feitos testes em alguns sensores.
 
 ## Novas Tarefas
 Aspectos relevantes na identificação de componentes: tensão e corrente de alimentação, número de pinos necessários para a comunicação, peso, dimensão, torque, temperatura e pressão de operação.
 
 ### Daniel
-- Simular MOSFET e circuito completo da REC;
-- Fazer identificação de componentes para o tubo de pitot;
-- Falar com Vinicius sobre quantos sensores nós vamos precisar no tubo de pitot.
+- Terminar design do MOSFET e simular circuito completo da REC (até 24/01);
+- Fazer identificação de componentes para o tubo de pitot e montar tabela com informações relevantes (até 26/01);
+    - Falar com Vinicius sobre quantos sensores nós vamos precisar no tubo de pitot. 
 
 ### Fábio
-- Continuar pesquisa sobre válvulas.
-- Entrar em contato com a propulsão sobre quais válvulas que eles vão utilizar (vent, câmara de combustão, bleed, check e safety);
-- Fazer identificação de componentes para o air break.
+- Terminar pesquisa sobre válvulas, selecionar componentes necessários e montar tabela com informações relevantes (até 23/01).
+    - Entrar em contato com a propulsão sobre quais válvulas que eles vão utilizar (vent, câmara de combustão, bleed, check e safety);
+- Fazer identificação de componentes para o air break e montar tabela com informações relevantes (até 26/01).
 
 ### Gabriel
-- Terminar os testes de integração EPS + CDHS;
-- Fazer identificação de componentes para PCS (sensores).
+- Terminar os testes de integração EPS + CDHS (até 25/01);
+- Fazer identificação de componentes para PCS (sensores) e montar tabela com informações relevantes (até 26/01).
