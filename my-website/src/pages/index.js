@@ -22,7 +22,7 @@ const features = [
     },
     {
         title: (
-          <a href="docs/aurorav2/software/protocolos/i2c">
+          <a href="docs/aurorav2/software/testes">
             Software
           </a>
         ),

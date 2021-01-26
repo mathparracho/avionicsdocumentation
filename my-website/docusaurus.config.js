@@ -42,7 +42,7 @@ module.exports = {
             },
             {
               label: 'Software',
-              to: 'docs/aurorav2/software/protocolos/i2c',
+              to: 'docs/aurorav2/software/testes',
             },
             {
               label: 'Hardware',
