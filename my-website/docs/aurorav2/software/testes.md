@@ -3,6 +3,13 @@ id: testes
 title: Códigos de Teste
 sidebar_label: Testes
 ---
+
+Os trechos de código abaixo servem para testar os módulos presentes no EPS e CDHS. Eles foram utilizados durante a validação das placas-protótipo e servem para identificar o funcionamento correto dos sensores.
+
+:::tip Observação
+Cada trecho abaixo inicia o monitor serial numa taxa diferente. Lembre-se de fazer o ajuste necessário em platformio.ini
+:::
+
 ## I2C Scanner
 ```cpp
 #include <Arduino.h>
@@ -124,23 +131,21 @@ void loop(void)
 
 ## BMP280
 ```cpp
-
-#include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <Adafruit_BMP280.h>
 
-Adafruit_BMP280 bmp; // I2C
-//Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
-//Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO,  BMP_SCK);
+Adafruit_BMP280 bmp; // use I2C interface
+Adafruit_Sensor *bmp_temp = bmp.getTemperatureSensor();
+Adafruit_Sensor *bmp_pressure = bmp.getPressureSensor();
 
 void setup() {
   Serial.begin(9600);
-  Serial.println(F("BMP280 test"));
+  Serial.println(F("BMP280 Sensor event test"));
 
   if (!bmp.begin()) {
     Serial.println(F("Could not find a valid BMP280 sensor, check wiring!"));
-    while (1);
+    while (1) delay(10);
   }
 
   /* Default settings from datasheet. */
@@ -149,23 +154,25 @@ void setup() {
                   Adafruit_BMP280::SAMPLING_X16,    /* Pressure oversampling */
                   Adafruit_BMP280::FILTER_X16,      /* Filtering. */
                   Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
+
+  bmp_temp->printSensorDetails();
 }
 
 void loop() {
-    Serial.print(F("Temperature = "));
-    Serial.print(bmp.readTemperature());
-    Serial.println(" *C");
+  sensors_event_t temp_event, pressure_event;
+  bmp_temp->getEvent(&temp_event);
+  bmp_pressure->getEvent(&pressure_event);
+  
+  Serial.print(F("Temperature = "));
+  Serial.print(temp_event.temperature);
+  Serial.println(" *C");
 
-    Serial.print(F("Pressure = "));
-    Serial.print(bmp.readPressure());
-    Serial.println(" Pa");
+  Serial.print(F("Pressure = "));
+  Serial.print(pressure_event.pressure);
+  Serial.println(" hPa");
 
-    Serial.print(F("Approx altitude = "));
-    Serial.print(bmp.readAltitude(1012)); /* Adjusted to local forecast! */
-    Serial.println(" m");
-
-    Serial.println();
-    delay(2000);
+  Serial.println();
+  delay(2000);
 }
 ```
 
@@ -225,7 +232,60 @@ void loop() {
 
 ## BMP388
 ```cpp
-
+#include <Arduino.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <Adafruit_Sensor.h>
+#include "Adafruit_BMP3XX.h"
+ 
+#define BMP_SCK 13
+#define BMP_MISO 12
+#define BMP_MOSI 11
+#define BMP_CS 10
+ 
+#define SEALEVELPRESSURE_HPA (1012)
+ 
+Adafruit_BMP3XX bmp;
+ 
+void setup() {
+  Serial.begin(115200);
+  while (!Serial);
+  Serial.println("Adafruit BMP388 / BMP390 test");
+ 
+  if (!bmp.begin_I2C()) {   // hardware I2C mode, can pass in address & alt Wire
+  //if (! bmp.begin_SPI(BMP_CS)) {  // hardware SPI mode  
+  //if (! bmp.begin_SPI(BMP_CS, BMP_SCK, BMP_MISO, BMP_MOSI)) {  // software SPI mode
+    Serial.println("Could not find a valid BMP3 sensor, check wiring!");
+    while (1);
+  }
+ 
+  // Set up oversampling and filter initialization
+  bmp.setTemperatureOversampling(BMP3_OVERSAMPLING_8X);
+  bmp.setPressureOversampling(BMP3_OVERSAMPLING_4X);
+  bmp.setIIRFilterCoeff(BMP3_IIR_FILTER_COEFF_3);
+  bmp.setOutputDataRate(BMP3_ODR_50_HZ);
+}
+ 
+void loop() {
+  if (! bmp.performReading()) {
+    Serial.println("Failed to perform reading :(");
+    return;
+  }
+  Serial.print("Temperature = ");
+  Serial.print(bmp.temperature);
+  Serial.println(" *C");
+ 
+  Serial.print("Pressure = ");
+  Serial.print(bmp.pressure / 100.0);
+  Serial.println(" hPa");
+ 
+  Serial.print("Approx. Altitude = ");
+  Serial.print(bmp.readAltitude(SEALEVELPRESSURE_HPA));
+  Serial.println(" m");
+ 
+  Serial.println();
+  delay(2000);
+}
 ```
 
 ## LoRa RFM95W
