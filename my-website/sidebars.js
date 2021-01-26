@@ -6,11 +6,7 @@ module.exports = {
         {
             'Aurora v2': [
                 {
-                    Software: [
-                        {
-                            Protocolos: ['aurorav2/software/protocolos/i2c', 'aurorav2/software/protocolos/spi'],
-                        },
-                    'aurorav2/software/testes'],
+                    Software: ['aurorav2/software/testes'],
                 },
                 {
                     Hardware: [
