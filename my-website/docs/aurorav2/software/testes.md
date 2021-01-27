@@ -6,6 +6,8 @@ sidebar_label: Testes
 
 Os trechos de código abaixo servem para testar os módulos presentes no EPS e CDHS. Eles foram utilizados durante a validação das placas-protótipo e servem para identificar o funcionamento correto dos sensores. Os pinos já estão de acordo com os utilizados pelo teensy no CDHS.
 
+Mais informação sobre os testes de integração [aqui](/docs/aurorav2/hardware/placas/integracao/epscdhs)
+
 :::tip Observação
 Cada trecho abaixo inicia o monitor serial numa taxa diferente. Lembre-se de fazer o ajuste necessário em platformio.ini:
 
