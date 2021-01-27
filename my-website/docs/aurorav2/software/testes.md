@@ -4,72 +4,93 @@ title: Códigos de Teste
 sidebar_label: Testes
 ---
 
-Os trechos de código abaixo servem para testar os módulos presentes no EPS e CDHS. Eles foram utilizados durante a validação das placas-protótipo e servem para identificar o funcionamento correto dos sensores.
+Os trechos de código abaixo servem para testar os módulos presentes no EPS e CDHS. Eles foram utilizados durante a validação das placas-protótipo e servem para identificar o funcionamento correto dos sensores. Os pinos já estão de acordo com os utilizados pelo teensy no CDHS.
 
 :::tip Observação
-Cada trecho abaixo inicia o monitor serial numa taxa diferente. Lembre-se de fazer o ajuste necessário em platformio.ini
+Cada trecho abaixo inicia o monitor serial numa taxa diferente. Lembre-se de fazer o ajuste necessário em platformio.ini:
+
+```cpp
+; PlatformIO Project Configuration File
+
+[env:teensy35]
+platform = teensy
+board = teensy35
+framework = arduino
+lib_deps = //Suas libs
+monitor_speed = 9600 //Mudar aqui
+```
 :::
 
 ## I2C Scanner
 ```cpp
+// I2C Scanner
+// Data: 27/01/21
+// O propósito desse código é identificar 
+// os dispositivos I2C conectados ao 
+// microcontrolador e printar seus endereços;
+
 #include <Arduino.h>
 #include <Wire.h>
- 
+
 void setup()
 {
-  Wire.begin();
- 
-  Serial.begin(9600);
-  while (!Serial);             // Leonardo: wait for serial monitor
-  Serial.println("\nI2C Scanner");
+    Wire.begin();
+
+    Serial.begin(9600);
+    while (!Serial); 
+    Serial.println("\nI2C Scanner");
 }
- 
- 
+
 void loop()
 {
-  byte error, address;
-  int nDevices;
- 
-  Serial.println("Scanning...");
- 
-  nDevices = 0;
-  for(address = 1; address < 127; address++ )
-  {
-    // The i2c_scanner uses the return value of
-    // the Write.endTransmisstion to see if
-    // a device did acknowledge to the address.
-    Wire.beginTransmission(address);
-    error = Wire.endTransmission();
- 
-    if (error == 0)
+    byte error, address;
+    int nDevices;
+
+    Serial.println("Scanning...");
+
+    nDevices = 0;
+    for (address = 1; address < 127; address++)
     {
-      Serial.print("I2C device found at address 0x");
-      if (address<16)
-        Serial.print("0");
-      Serial.print(address,HEX);
-      Serial.println("  !");
- 
-      nDevices++;
+        // The i2c_scanner uses the return value of
+        // the Write.endTransmisstion to see if
+        // a device did acknowledge to the address.
+        Wire.beginTransmission(address);
+        error = Wire.endTransmission();
+
+        if (error == 0)
+        {
+            Serial.print("I2C device found at address 0x");
+            if (address < 16)
+                Serial.print("0");
+            Serial.print(address, HEX);
+            Serial.println("  !");
+
+            nDevices++;
+        }
+        else if (error == 4)
+        {
+            Serial.print("Unknown error at address 0x");
+            if (address < 16)
+                Serial.print("0");
+            Serial.println(address, HEX);
+        }
     }
-    else if (error==4)
-    {
-      Serial.print("Unknown error at address 0x");
-      if (address<16)
-        Serial.print("0");
-      Serial.println(address,HEX);
-    }    
-  }
-  if (nDevices == 0)
-    Serial.println("No I2C devices found\n");
-  else
-    Serial.println("done\n");
- 
-  delay(5000);           // wait 5 seconds for next scan
+    if (nDevices == 0)
+        Serial.println("No I2C devices found\n");
+    else
+        Serial.println("done\n");
+
+    delay(5000); // wait 5 seconds for next scan
 }
 ```
 
 ## INA219
 ```cpp
+// INA219
+// Leitura de tensão, corrente e potência 
+// Data: 27/01/21
+// Libs: Adafruit INA219, Adafruit Sensor
+
 #include <Arduino.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
@@ -77,436 +98,472 @@ void loop()
 
 Adafruit_INA219 ina219;
 
-void setup(void) 
+void setup(void)
 {
-  Serial.begin(115200);
-  while (!Serial) {
-      // will pause Zero, Leonardo, etc until serial console opens
-      delay(1);
-  }
+    Serial.begin(115200);
+    while (!Serial)
+    {
+        // will pause Zero, Leonardo, etc until serial console opens
+        delay(1);
+    }
 
-  uint32_t currentFrequency;
-    
-  Serial.println("Hello!");
-  
-  // Initialize the INA219.
-  // By default the initialization will use the largest range (32V, 2A).  However
-  // you can call a setCalibration function to change this range (see comments).
-  if (! ina219.begin()) {
-    Serial.println("Failed to find INA219 chip");
-    while (1) { delay(10); }
-  }
-  // To use a slightly lower 32V, 1A range (higher precision on amps):
-  //ina219.setCalibration_32V_1A();
-  // Or to use a lower 16V, 400mA range (higher precision on volts and amps):
-  //ina219.setCalibration_16V_400mA();
+    uint32_t currentFrequency;
 
-  Serial.println("Measuring voltage and current with INA219 ...");
+    Serial.println("Hello!");
+
+    // Initialize the INA219.
+    // By default the initialization will use the largest range (32V, 2A).  However
+    // you can call a setCalibration function to change this range (see comments).
+    if (!ina219.begin())
+    {
+        Serial.println("Failed to find INA219 chip");
+        while (1)
+        {
+            delay(10);
+        }
+    }
+    // To use a slightly lower 32V, 1A range (higher precision on amps):
+    //ina219.setCalibration_32V_1A();
+    // Or to use a lower 16V, 400mA range (higher precision on volts and amps):
+    //ina219.setCalibration_16V_400mA();
+
+    Serial.println("Measuring voltage and current with INA219 ...");
 }
 
-void loop(void) 
+void loop(void)
 {
-  float shuntvoltage = 0;
-  float busvoltage = 0;
-  float current_mA = 0;
-  float loadvoltage = 0;
-  float power_mW = 0;
+    float shuntvoltage = 0;
+    float busvoltage = 0;
+    float current_mA = 0;
+    float loadvoltage = 0;
+    float power_mW = 0;
 
-  shuntvoltage = ina219.getShuntVoltage_mV();
-  busvoltage = ina219.getBusVoltage_V();
-  current_mA = ina219.getCurrent_mA();
-  power_mW = ina219.getPower_mW();
-  loadvoltage = busvoltage + (shuntvoltage / 1000);
-  
-  Serial.print("Bus Voltage:   "); Serial.print(busvoltage); Serial.println(" V");
-  Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" mV");
-  Serial.print("Load Voltage:  "); Serial.print(loadvoltage); Serial.println(" V");
-  Serial.print("Current:       "); Serial.print(current_mA); Serial.println(" mA");
-  Serial.print("Power:         "); Serial.print(power_mW); Serial.println(" mW");
-  Serial.println("");
+    shuntvoltage = ina219.getShuntVoltage_mV();
+    busvoltage = ina219.getBusVoltage_V();
+    current_mA = ina219.getCurrent_mA();
+    power_mW = ina219.getPower_mW();
+    loadvoltage = busvoltage + (shuntvoltage / 1000);
 
-  delay(2000);
+    Serial.print("Bus Voltage:   ");
+    Serial.print(busvoltage);
+    Serial.println(" V");
+    Serial.print("Shunt Voltage: ");
+    Serial.print(shuntvoltage);
+    Serial.println(" mV");
+    Serial.print("Load Voltage:  ");
+    Serial.print(loadvoltage);
+    Serial.println(" V");
+    Serial.print("Current:       ");
+    Serial.print(current_mA);
+    Serial.println(" mA");
+    Serial.print("Power:         ");
+    Serial.print(power_mW);
+    Serial.println(" mW");
+    Serial.println("");
+
+    delay(2000);
 }
 ```
 
-## BMP280
+## GY-91
+### BMP280
 ```cpp
+// BMP280
+// Leitura de temperatura, pressão e altitude.
+// Data: 27/01/21
+// Libs: Adafruit BMP280
+// Observação: Lembrar de mudar o parâmetro de bmp.readAltitude()
+// de acordo com a pressão do nível do mar local.
+
+#include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <Adafruit_BMP280.h>
 
-Adafruit_BMP280 bmp; // use I2C interface
-Adafruit_Sensor *bmp_temp = bmp.getTemperatureSensor();
-Adafruit_Sensor *bmp_pressure = bmp.getPressureSensor();
+Adafruit_BMP280 bmp; // I2C
 
-void setup() {
-  Serial.begin(9600);
-  Serial.println(F("BMP280 Sensor event test"));
+void setup()
+{
+    Serial.begin(9600);
+    Serial.println(F("BMP280 test"));
 
-  if (!bmp.begin()) {
-    Serial.println(F("Could not find a valid BMP280 sensor, check wiring!"));
-    while (1) delay(10);
-  }
+    if (!bmp.begin())
+    {
+        Serial.println(F("Could not find a valid BMP280 sensor, check wiring!"));
+        while (1);
+    }
 
-  /* Default settings from datasheet. */
-  bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
-                  Adafruit_BMP280::SAMPLING_X2,     /* Temp. oversampling */
-                  Adafruit_BMP280::SAMPLING_X16,    /* Pressure oversampling */
-                  Adafruit_BMP280::FILTER_X16,      /* Filtering. */
-                  Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
-
-  bmp_temp->printSensorDetails();
+    /* Default settings from datasheet. */
+    bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
+                    Adafruit_BMP280::SAMPLING_X2,     /* Temp. oversampling */
+                    Adafruit_BMP280::SAMPLING_X16,    /* Pressure oversampling */
+                    Adafruit_BMP280::FILTER_X16,      /* Filtering. */
+                    Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
 }
 
-void loop() {
-  sensors_event_t temp_event, pressure_event;
-  bmp_temp->getEvent(&temp_event);
-  bmp_pressure->getEvent(&pressure_event);
-  
-  Serial.print(F("Temperature = "));
-  Serial.print(temp_event.temperature);
-  Serial.println(" *C");
+void loop()
+{
+    Serial.print(F("Temperature = "));
+    Serial.print(bmp.readTemperature());
+    Serial.println(" *C");
 
-  Serial.print(F("Pressure = "));
-  Serial.print(pressure_event.pressure);
-  Serial.println(" hPa");
+    Serial.print(F("Pressure = "));
+    Serial.print(bmp.readPressure());
+    Serial.println(" Pa");
 
-  Serial.println();
-  delay(2000);
+    Serial.print(F("Approx altitude = "));
+    Serial.print(bmp.readAltitude(1013.25)); /* Adjusted to local forecast! */
+    Serial.println(" m");
+
+    Serial.println();
+    delay(2000);
 }
 ```
 
-## MPU9250
+### MPU-9250
 ```cpp
+// MPU-9250
+// Leitura do acelerômetro, giroscópio, magnetômetro e temperatura 
+// Data: 27/01/21
+// Libs: MPU9250
+
 #include <Arduino.h>
 #include "MPU9250.h"
 
 // an MPU9250 object with the MPU-9250 sensor on I2C bus 0 with address 0x68
-MPU9250 IMU(Wire,0x68);
+MPU9250 IMU(Wire, 0x68);
 int status;
 
-void setup() {
-  // serial to display data
-  Serial.begin(115200);
-  while(!Serial) {}
+void setup()
+{
+    // serial to display data
+    Serial.begin(115200);
+    while (!Serial){}
 
-  // start communication with IMU 
-  status = IMU.begin();
-  if (status < 0) {
-    Serial.println("IMU initialization unsuccessful");
-    Serial.println("Check IMU wiring or try cycling power");
-    Serial.print("Status: ");
-    Serial.println(status);
-    while(1) {}
-  }
-
+    // start communication with IMU
+    status = IMU.begin();
+    if (status < 0)
+    {
+        Serial.println("IMU initialization unsuccessful");
+        Serial.println("Check IMU wiring or try cycling power");
+        Serial.print("Status: ");
+        Serial.println(status);
+        while (1)
+        {
+        }
+    }
 }
 
-void loop() {
-  // read the sensor
-  IMU.readSensor();
-  // display the data
-  Serial.print(IMU.getAccelX_mss(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getAccelY_mss(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getAccelZ_mss(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getGyroX_rads(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getGyroY_rads(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getGyroZ_rads(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getMagX_uT(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getMagY_uT(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getMagZ_uT(),6);
-  Serial.print("\t");
-  Serial.print(IMU.getTemperature_C(),6);
-  Serial.print("\n");
-  delay(100);
+void loop()
+{
+    // read the sensor
+    IMU.readSensor();
+    // display the data
+    Serial.print(IMU.getAccelX_mss(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getAccelY_mss(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getAccelZ_mss(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getGyroX_rads(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getGyroY_rads(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getGyroZ_rads(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getMagX_uT(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getMagY_uT(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getMagZ_uT(), 6);
+    Serial.print("\t");
+    Serial.print(IMU.getTemperature_C(), 6);
+    Serial.print("\n");
+    delay(100);
 }
 ```
 
 ## BMP388
 ```cpp
+// BMP388
+// Leitura de temperatura, pressão e altitude.
+// Data: 27/01/21
+// Libs: Adafruit BMP3XX, Adafruit Sensor
+// Observação: Ajustar SEALEVELPRESSURE_HPA de acordo
+// com a pressão do nível do mar local.
+
 #include <Arduino.h>
 #include <Wire.h>
-#include <SPI.h>
 #include <Adafruit_Sensor.h>
 #include "Adafruit_BMP3XX.h"
- 
-#define BMP_SCK 13
-#define BMP_MISO 12
-#define BMP_MOSI 11
-#define BMP_CS 10
- 
-#define SEALEVELPRESSURE_HPA (1012)
- 
+
+#define SEALEVELPRESSURE_HPA (1013.25)
+
 Adafruit_BMP3XX bmp;
- 
-void setup() {
-  Serial.begin(115200);
-  while (!Serial);
-  Serial.println("Adafruit BMP388 / BMP390 test");
- 
-  if (!bmp.begin_I2C()) {   // hardware I2C mode, can pass in address & alt Wire
-  //if (! bmp.begin_SPI(BMP_CS)) {  // hardware SPI mode  
-  //if (! bmp.begin_SPI(BMP_CS, BMP_SCK, BMP_MISO, BMP_MOSI)) {  // software SPI mode
-    Serial.println("Could not find a valid BMP3 sensor, check wiring!");
-    while (1);
-  }
- 
-  // Set up oversampling and filter initialization
-  bmp.setTemperatureOversampling(BMP3_OVERSAMPLING_8X);
-  bmp.setPressureOversampling(BMP3_OVERSAMPLING_4X);
-  bmp.setIIRFilterCoeff(BMP3_IIR_FILTER_COEFF_3);
-  bmp.setOutputDataRate(BMP3_ODR_50_HZ);
+
+void setup()
+{
+    Serial.begin(9600);
+    while (!Serial);
+    Serial.println("Adafruit BMP388 / BMP390 test");
+
+    if (!bmp.begin_I2C()) // hardware I2C mode, can pass in address & alt Wire
+    { 
+        Serial.println("Could not find a valid BMP3 sensor, check wiring!");
+        while (1);
+    }
+
+    // Set up oversampling and filter initialization
+    bmp.setTemperatureOversampling(BMP3_OVERSAMPLING_8X);
+    bmp.setPressureOversampling(BMP3_OVERSAMPLING_4X);
+    bmp.setIIRFilterCoeff(BMP3_IIR_FILTER_COEFF_3);
+    bmp.setOutputDataRate(BMP3_ODR_50_HZ);
 }
- 
-void loop() {
-  if (! bmp.performReading()) {
-    Serial.println("Failed to perform reading :(");
-    return;
-  }
-  Serial.print("Temperature = ");
-  Serial.print(bmp.temperature);
-  Serial.println(" *C");
- 
-  Serial.print("Pressure = ");
-  Serial.print(bmp.pressure / 100.0);
-  Serial.println(" hPa");
- 
-  Serial.print("Approx. Altitude = ");
-  Serial.print(bmp.readAltitude(SEALEVELPRESSURE_HPA));
-  Serial.println(" m");
- 
-  Serial.println();
-  delay(2000);
+
+void loop()
+{
+    if (!bmp.performReading())
+    {
+        Serial.println("Failed to perform reading :(");
+        return;
+    }
+    Serial.print("Temperature = ");
+    Serial.print(bmp.temperature);
+    Serial.println(" *C");
+
+    Serial.print("Pressure = ");
+    Serial.print(bmp.pressure / 100.0);
+    Serial.println(" hPa");
+
+    Serial.print("Approx. Altitude = ");
+    Serial.print(bmp.readAltitude(SEALEVELPRESSURE_HPA));
+    Serial.println(" m");
+
+    Serial.println();
+    delay(2000);
 }
 ```
 
 ## LoRa RFM95W
+### Transmitter
 ```cpp
+// LoRa RFM95 Transmitter Test
+// Data: 27/01/21
+// Libs: RadioHead v1.113
+// O objetivo deste código é programar o LoRa para
+// enviar um pacote, esperar e acusar o recebimento
+// da mensagem devolvida pelo outro LoRa.
+// O RSSI (Received Signal Strength Indication), indicador
+// de intensidade do sinal recebido, é printado.
 
+#include <Arduino.h>
+#include <SPI.h>
+#include <RH_RF95.h>
+
+// Singleton instance of the radio driver
+RH_RF95 rf95(24, 26); // (CS, INT)
+
+void setup()
+{
+    Serial.begin(9600);
+    while (!Serial); // Wait for serial port to be available
+    if (!rf95.init())
+        Serial.println("init failed");
+    rf95.setFrequency(915.0);
+    // Defaults after init are 434.0MHz, 13dBm, Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on
+
+    // You can change the modulation parameters with eg
+    // rf95.setModemConfig(RH_RF95::Bw500Cr45Sf128);
+
+    // The default transmitter power is 13dBm, using PA_BOOST.
+    // If you are using RFM95/96/97/98 modules which uses the PA_BOOST transmitter pin, then
+    // you can set transmitter powers from 2 to 20 dBm:
+    rf95.setTxPower(20, false);
+}
+
+void loop()
+{
+    Serial.println("Sending to rf95_server");
+    // Send a message to rf95_server
+    uint8_t data[] = "Hello World!";
+    rf95.send(data, sizeof(data));
+
+    rf95.waitPacketSent();
+    // Now wait for a reply
+    uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
+    uint8_t len = sizeof(buf);
+
+    if (rf95.waitAvailableTimeout(3000))
+    {
+        // Should be a reply message for us now
+        if (rf95.recv(buf, &len))
+        {
+            Serial.print("got reply: ");
+            Serial.println((char *)buf);
+            Serial.print("RSSI: ");
+            Serial.println(rf95.lastRssi(), DEC);
+        }
+        else
+        {
+            Serial.println("recv failed");
+        }
+    }
+    else
+    {
+        Serial.println("No reply, is rf95_server running?");
+    }
+    delay(400);
+}
+```
+
+### Receiver
+```cpp
+// LoRa RFM95 Receiver Test
+// Data: 27/01/21
+// Libs: RadioHead v1.113
+// O objetivo deste código é programar o LoRa para
+// fazer o recebimento dos dados enviados e devolver uma mensagem.
+// O RSSI (Received Signal Strength Indication), indicador
+// de intensidade do sinal recebido, é printado.
+
+#include <Arduino.h>
+#include <SPI.h>
+#include <RH_RF95.h>
+
+// Singleton instance of the radio driver
+// RH_RF95 rf95;
+RH_RF95 rf95(24, 26); // (CS, INT)
+
+int led = 13; // Used to blink
+
+void setup()
+{
+    pinMode(led, OUTPUT);
+    Serial.begin(9600);
+    while (!Serial); // Wait for serial port to be available
+    if (!rf95.init())
+        Serial.println("init failed");
+    rf95.setFrequency(915.0);
+    // Defaults after init are 434.0MHz, 13dBm, Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on
+
+    // You can change the modulation parameters with eg
+    // rf95.setModemConfig(RH_RF95::Bw500Cr45Sf128);
+
+    // The default transmitter power is 13dBm, using PA_BOOST.
+    // If you are using RFM95/96/97/98 modules which uses the PA_BOOST transmitter pin, then
+    // you can set transmitter powers from 2 to 20 dBm:
+    rf95.setTxPower(20, false);
+}
+
+void loop()
+{
+    if (rf95.available())
+    {
+        // Should be a message for us now
+        uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
+        uint8_t len = sizeof(buf);
+        if (rf95.recv(buf, &len))
+        {
+            digitalWrite(led, HIGH);
+            //      RH_RF95::printBuffer("request: ", buf, len);
+            Serial.print("got request: ");
+            Serial.println((char *)buf);
+            Serial.print("RSSI: ");
+            Serial.println(rf95.lastRssi(), DEC);
+
+            // Send a reply
+            uint8_t data[] = "And hello back to you";
+            rf95.send(data, sizeof(data));
+            rf95.waitPacketSent();
+            Serial.println("Sent a reply");
+            digitalWrite(led, LOW);
+        }
+        else
+        {
+            Serial.println("recv failed");
+        }
+    }
+}
 ```
 
 ## MicroSD Adapter
 ```cpp
+// Adaptador MicroSD
+// Teste de escrita no cartão microSD
+// Data: 27/01/21
+// Libs: SD
+
 #include <Arduino.h>
 #include <SPI.h>
 #include <SD.h>
 
-void initializeCard(void);
-void eof(void);
-void flushBuffer(void);
-void readByte(void);
+File myFile;
 
-File fd;
-const uint8_t BUFFER_SIZE = 20;
-char fileName[] = "demoFile.txt"; // SD library only supports up to 8.3 names
-char buff[BUFFER_SIZE+2] = "";  // Added two to allow a 2 char peek for EOF state
-uint8_t indexa = 0;
-
-
-
-const uint8_t chipSelect = 27;
-const uint8_t cardDetect = 28;
-
-enum states: uint8_t { NORMAL, E, EO };
-uint8_t state = NORMAL;
-
-bool alreadyBegan = false;  // SD.begin() misbehaves if not first call
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Standard Arduino setup function
-////////////////////////////////////////////////////////////////////////////////
 void setup()
 {
-  Serial.begin(57600);
-  while (!Serial);  // Wait for serial port to connect (ATmega32U4 type PCBAs)
-
-  // Note: To satisfy the AVR SPI gods the SD library takes care of setting
-  // SS_PIN as an output. We don't need to.
-  pinMode(cardDetect, INPUT);
-
-  initializeCard();
+    // Open serial communications and wait for port to open:
+    Serial.begin(9600);
+    while (!Serial)
+    {
+        ; // wait for serial port to connect. Needed for native USB port only
+    }
+    Serial.print("Initializing SD card...");
+    if (!SD.begin(27))
+    {
+        Serial.println("initialization failed!");
+        while (1)
+            ;
+    }
+    Serial.println("initialization done.");
+    // open the file. note that only one file can be open at a time,
+    // so you have to close this one before opening another.
+    myFile = SD.open("test.txt", FILE_WRITE);
+    // if the file opened okay, write to it:
+    if (myFile)
+    {
+        Serial.print("Writing to test.txt...");
+        myFile.println("--- Inicio ---");
+        myFile.println("Data: 27/01/21");
+        myFile.println("Autor: Minerva Rockets");
+        myFile.println("Esse é um teste da escrita no cartão microSD");
+        for (int i = 0; i < 20; i++)
+        {
+            myFile.println(i);
+        }
+        myFile.println("--- Fim ---");
+        // close the file:
+        myFile.close();
+        Serial.println("done.");
+    }
+    else
+    {
+        // if the file didn't open, print an error:
+        Serial.println("error opening test.txt");
+    }
 }
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Arduino calls this function over and over again when running
-////////////////////////////////////////////////////////////////////////////////
 void loop()
 {
-  // Make sure the card is still present
-  if (!digitalRead(cardDetect))
-  {
-    initializeCard();
-  }
-
-  if (Serial.available() > 0)
-  {
-    readByte();
-    
-    if (indexa == BUFFER_SIZE)
-    {
-      flushBuffer();  // Write full buffer to µSD card
-    }
-  }
-}
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Do everything from detecting card through opening the demo file
-////////////////////////////////////////////////////////////////////////////////
-void initializeCard(void)
-{
-  Serial.print(F("Initializing SD card..."));
-  
-  // Is there even a card?
-  if (!digitalRead(cardDetect))
-  {
-    Serial.println(F("No card detected. Waiting for card."));
-    while (!digitalRead(cardDetect));
-    delay(250); // 'Debounce insertion'
-  }
-  
-  // Card seems to exist.  begin() returns failure
-  // even if it worked if it's not the first call.
-  if (!SD.begin(chipSelect) && !alreadyBegan)  // begin uses half-speed...
-  {
-    Serial.println(F("Initialization failed!"));
-    initializeCard(); // Possible infinite retry loop is as valid as anything
-  }
-  else
-  {
-    alreadyBegan = true;
-  }
-  Serial.println(F("Initialization done."));
-
-  Serial.print(fileName);
-  if (SD.exists(fileName))
-  {
-    Serial.println(F(" exists."));
-  }
-  else
-  {
-    Serial.println(F(" doesn't exist. Creating."));
-  }
-  
-  Serial.print("Opening file: ");
-  Serial.println(fileName);
-
-  Serial.println(F("Enter text to be written to file. 'EOF' will terminate writing."));
-}
-
-
-////////////////////////////////////////////////////////////////////////////////
-// This function is called after the EOF command is received. It writes the
-// remaining unwritten data to the µSD card, and prints out the full contents
-// of the log file.
-////////////////////////////////////////////////////////////////////////////////
-void eof(void)
-{
-  indexa -= 3; // Remove EOF from the end
-  flushBuffer();
-  
-  // Re-open the file for reading:
-  fd = SD.open(fileName);
-  if (fd)
-  {
-    Serial.println("");
-    Serial.print(fileName);
-    Serial.println(":");
-
-    while (fd.available())
-    {
-      Serial.write(fd.read());
-    }
-  }
-  else
-  {
-    Serial.print("Error opening ");
-    Serial.println(fileName);
-  }
-  fd.close();
-}
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Write the buffer to the log file. If we are possibly in the EOF state, verify
-// that to make sure the command isn't written to the file.
-////////////////////////////////////////////////////////////////////////////////
-void flushBuffer(void)
-{
-  fd = SD.open(fileName, FILE_WRITE);
-  if (fd) {
-    switch (state)  // If a flush occurs in the 'E' or the 'EO' state, read more to detect EOF
-    {
-    case NORMAL:
-      break;
-    case E:
-      readByte();
-      readByte();
-      break;
-    case EO:
-      readByte();
-      break;
-    }
-    fd.write(buff, indexa);
-    fd.flush();
-    indexa = 0;
-    fd.close();
-  }
-}
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Reads a byte from the serial connection. This also maintains the state to
-// capture the EOF command.
-////////////////////////////////////////////////////////////////////////////////
-void readByte(void)
-{
-  byte byteRead = Serial.read();
-  Serial.write(byteRead); // Echo
-  buff[indexa++] = byteRead;
-  
-  // Must be 'EOF' to not get confused with words such as 'takeoff' or 'writeoff'
-  if (byteRead == 'E' && state == NORMAL)
-  {
-    state = E;
-  }
-  else if (byteRead == 'O' && state == E)
-  {
-    state = EO;
-  }
-  else if (byteRead == 'F' && state == EO)
-  {
-    eof();
-    state = NORMAL;
-  }
+    // nothing happens after setup
 }
 ```
 
 ## MTK3339
 ```cpp
+// MTK-3339
+// Printa o que quer que o GPS esteja recebendo.
+// Veja o command set para interpretar:
+// https://cdn-shop.adafruit.com/datasheets/PMTK_A11.pdf
+// Data: 27/01/21
+// Libs: Adafruit GPS
+
 #include <Arduino.h>
 #include <Adafruit_GPS.h>
 #include <SoftwareSerial.h>
 
-// You can change the pin numbers to match your wiring:
 SoftwareSerial mySerial(0, 1);
 
-#define PMTK_SET_NMEA_UPDATE_1HZ  "$PMTK220,1000*1F"
-#define PMTK_SET_NMEA_UPDATE_5HZ  "$PMTK220,200*2C"
+#define PMTK_SET_NMEA_UPDATE_1HZ "$PMTK220,1000*1F"
+#define PMTK_SET_NMEA_UPDATE_5HZ "$PMTK220,200*2C"
 #define PMTK_SET_NMEA_UPDATE_10HZ "$PMTK220,100*2F"
 
 // turn on only the second sentence (GPRMC)
@@ -520,32 +577,36 @@ SoftwareSerial mySerial(0, 1);
 
 #define PMTK_Q_RELEASE "$PMTK605*31"
 
-void setup() {
-  while (!Serial); // wait for Serial to be ready
+void setup()
+{
+    while (!Serial)
+        ; // wait for Serial to be ready
 
-  Serial.begin(57600); // this baud rate doesn't actually matter!
-  mySerial.begin(9600);
-  delay(2000);
-  Serial.println("Get version!");
-  mySerial.println(PMTK_Q_RELEASE);
+    Serial.begin(57600); // this baud rate doesn't actually matter!
+    mySerial.begin(9600);
+    delay(2000);
+    Serial.println("Get version!");
+    mySerial.println(PMTK_Q_RELEASE);
 
-  // you can send various commands to get it started
-  //mySerial.println(PMTK_SET_NMEA_OUTPUT_RMCGGA);
-  mySerial.println(PMTK_SET_NMEA_OUTPUT_ALLDATA);
+    // you can send various commands to get it started
+    //mySerial.println(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+    mySerial.println(PMTK_SET_NMEA_OUTPUT_ALLDATA);
 
-  mySerial.println(PMTK_SET_NMEA_UPDATE_1HZ);
- }
+    mySerial.println(PMTK_SET_NMEA_UPDATE_1HZ);
+}
 
-
-void loop() {
-  if (Serial.available()) {
-   char c = Serial.read();
-   Serial.write(c);
-   mySerial.write(c);
-  }
-  if (mySerial.available()) {
-    char c = mySerial.read();
-    Serial.write(c);
-  }
+void loop()
+{
+    if (Serial.available())
+    {
+        char c = Serial.read();
+        Serial.write(c);
+        mySerial.write(c);
+    }
+    if (mySerial.available())
+    {
+        char c = mySerial.read();
+        Serial.write(c);
+    }
 }
 ```
