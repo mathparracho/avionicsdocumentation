@@ -189,7 +189,7 @@ This is important
 
 :::
 
-:::caution Atenção
+:::caution
 
 This is a caution
 
