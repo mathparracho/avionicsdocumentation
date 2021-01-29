@@ -35,7 +35,7 @@ const features = [
     },
     {
         title: (
-          <a href="docs/aurorav2/hardware/altium/drc">
+          <a href="docs/aurorav2/hardware/placas/eps">
             Hardware
           </a>
         ),

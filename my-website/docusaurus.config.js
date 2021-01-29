@@ -46,7 +46,7 @@ module.exports = {
             },
             {
               label: 'Hardware',
-              to: 'docs/aurorav2/hardware/altium/drc',
+              to: 'docs/aurorav2/hardware/placas/eps',
             },
           ],
         },
