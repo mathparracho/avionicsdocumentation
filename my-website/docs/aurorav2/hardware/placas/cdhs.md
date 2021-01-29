@@ -33,22 +33,29 @@ Os componentes da placa são:
 | Resistor                  |       9       | 4x 4.7kΩ, 1x 72Ω, 3x 220Ω, 1x47Ω |
 | Capacitor                 |       3       | 1x 47uF, 1x 10nF, 1x 0.1uF |
 
-## Esquemático
-![img](../../../../static/img/docs/hardware/cdhs_schem.jpg)
+## Esquemático e PCB
+### Versão do Protótipo
+![img](../../../../static/img/docs/hardware/cdhs_protschem.jpg)
+![img](../../../../static/img/docs/hardware/cdhs_protpcb.png)
 
-## PCB
-![img](../../../../static/img/docs/hardware/cdhs_pcb.png)
+### Versão atual
+![img](../../../../static/img/docs/hardware/cdhs_atualschem.jpg)
+![img](../../../../static/img/docs/hardware/cdhs_atualpcb.png)
 
 ## Testes no protótipo
 ### Componentes soldados
 Para validar o CDHS antes de mandar fabricar, nós utilizamos a fresa do laboratório para fabricar um protótipo. Por limitações dos tamanhos de placas que tínhamos e da fresadora, esse protótipo tem dimensões 87x87. Abaixo estão imagens da placa após todos os componentes terem sido soldados.
 
 #### Frente
-![img](../../../../static/img/docs/hardware/cdhs_protfront.jpg)
+![img](../../../../static/img/docs/hardware/cdhs_protfront.jpeg)
 
 #### Trás
-![img](../../../../static/img/docs/hardware/cdhs_protback.jpg)
+![img](../../../../static/img/docs/hardware/cdhs_protback.jpeg)
 
 ### Continuidade
-Testamos a continuidade das linhas de potência que alimentam o teensy e os sensores. O único problema encontrado foi a entrada de 3v3 no GY-91, que havia sido feita no pino "Vin" mas deve ser feita no pino "3v3". Também testamos a comunicação dos planos de ground. Como são muitos grounds diferentes e corremos o risco de esquecer algum nesse teste, uma boa estratégia é apertar ctrl+shift e selecionar algum pino de ground na Board no Altium. Dessa maneira, todos os grounds ficarão destacados e podemos checá-los um a um. Nenhum problema foi encontrado nos planos de ground. Além disso, foi testada a continuidade para os pinos de sinal. Todos eles estão corretos, a única exceção sendo o pino de sck. A trilha desse pino chega no teensy pela layer de cima, enquanto que a solda foi feita na layer de baixo. Um jumper foi soldado na placa de forma a corrigir esse erro e uma via foi colocada no projeto da board.
+Testamos a continuidade das linhas de potência que alimentam o teensy e os sensores. Todas elas chegam corretamente Também testamos a comunicação dos planos de ground. Como são muitos grounds diferentes e corremos o risco de esquecer algum nesse teste, uma boa estratégia é apertar ctrl+shift e selecionar algum pino de ground na Board no Altium. Dessa maneira, todos os grounds ficarão destacados e podemos checá-los um a um. Nenhum problema foi encontrado nos planos de ground. Além disso, foi testada a continuidade para os pinos de sinal. Todos eles estão corretos. 
 
+:::important Jumpers
+Percebemos que a trilha do pino D32 estava chegando no teensy pela layer de cima, enquanto que a solda foi feita na layer de baixo. Um jumper foi soldado na placa de forma a corrigir esse erro e uma via foi colocada no Altium. Além disso, quando fizemos o teste de integração percebemos que o pino D32 não era apropriado para o clock - deveria ter sido escolhido o D13 no lugar. Dois jumpers foram colocados na placa, trocando o D32 com o D13. Por fim, foi retirado da placa um par de resistores na linha I2C, pois apenas um era necessário.
+Outro jumper foi colocado para corrigir a alimentação do GY-91, que havia sido feita no pino "Vin" mas devia ter sido feita no pino "3v3". Todas essas modificações também já foram feitas no Altium da placa.
+:::
