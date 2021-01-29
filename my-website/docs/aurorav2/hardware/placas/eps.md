@@ -43,10 +43,10 @@ Os componentes da placa são:
 Para validar o EPS antes de mandar fabricar, nós utilizamos a fresa do laboratório para fabricar um protótipo. Por limitações dos tamanhos de placas que tínhamos e da fresadora, esse protótipo tem dimensões 87x87. Abaixo estão imagens da placa após todos os componentes terem sido soldados.
 
 #### Frente
-![img](../../../../static/img/docs/hardware/eps_protfront.jpg)
+![img](../../../../static/img/docs/hardware/eps_protfront.jpeg)
 
 #### Trás
-![img](../../../../static/img/docs/hardware/eps_protback.jpg)
+![img](../../../../static/img/docs/hardware/eps_protback.jpeg)
 
 ### Continuidade
 Testes de continuidade foram executados na EPS buscando encontrar trilhas mal-comunicadas e planos de ground isolados. Todas as trilhas estão corretas, porém a seção de ground envolvida no regulador de 3v3 não se comunicava com o resto. Para resolver isso foi soldado um jumper. Uma via comunicando esse plano de ground foi adicionada no projeto.
