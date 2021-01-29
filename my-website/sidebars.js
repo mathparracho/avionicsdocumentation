@@ -11,14 +11,14 @@ module.exports = {
                 {
                     Hardware: [
                         {
-                            Altium: ['aurorav2/hardware/altium/drc'],
-                        },
-                        {
                             Placas: ['aurorav2/hardware/placas/eps', 'aurorav2/hardware/placas/cdhs', 'aurorav2/hardware/placas/rec', 'aurorav2/hardware/placas/cam',
                                 {
                                     Integração: ['aurorav2/hardware/placas/integracao/epscdhs']
                                 } 
                             ],
+                        },
+                        {
+                            Altium: ['aurorav2/hardware/altium/drc'],
                         },
                         {
                             Fresadora: ['aurorav2/hardware/fresadora/dicas'],
@@ -46,7 +46,7 @@ module.exports = {
             ],
         },
         {
-            Outros: ['outros/styleguide'],
+            Outros: ['outros/dicasgerais', 'outros/styleguide'],
         }
     ],
 };
