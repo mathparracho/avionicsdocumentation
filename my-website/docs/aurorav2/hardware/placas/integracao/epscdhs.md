@@ -6,7 +6,7 @@ sidebar_label: EPS + CDHS
 
 *Observação*: Todos os testes nos sensores do CDHS dependem da energia fornecida pelo EPS, por isso os testes com esses sensores estão sendo armazenados nesta página.
 
-![img](../../../../../static/img/docs/hardware/int_epscdhsfront.jpg)
+![img](../../../../../static/img/docs/hardware/integracao/int_epscdhs.jpeg)
 
 ## Informações sobre os módulos
 - INA219
@@ -71,27 +71,27 @@ O BMP388 possui funções capazes de nos fornecer dados de temperatura, pressão
 
 ### GY-91
 #### BMP280
-O BMP280 é bem semelhante ao BMP388 nas suas capacidades. Também fornecemos a pressão a nível do mar local, dessa vez como parâmetro da função bmp.readAltitude(). Foi observada uma discrepância muito grande dos dados desse sensor em comparação aos do BMP388, muito embora a equação utilizada para definir a altitude seja idêntica nas duas situações. A origem dessa diferença está sendo investigada.
+O BMP280 é bem semelhante ao BMP388 nas suas capacidades. Também fornecemos a pressão a nível do mar local, dessa vez como parâmetro da função bmp.readAltitude(). Foi observada uma discrepância muito grande dos dados de pressão - e, consequentemente, de altitude - adquiridos pelo BMP280 em comparação aos do BMP388, mesmo que ambos estivessem com a mesmo input de pressão do nível do mar. O motivo dessa diferença está sendo estudado.
 
 
 ![img](../../../../../static/img/docs/hardware/integracao/bmp280test.png)
 
 #### MPU-9250
-O código de teste do MPU-9250 nos forneceu dados do acelerômetro, do giroscópio, do magnetômetro - todos esses em 3 eixos - e de temperatura. Há uma diferença considerável na temperatura percebida por esse sensor e as percebidas pelo BMP280 e BMP388. Uma diferença é esperada devido à imprecisão, porém está sob estudo como diminuir essa discrepância entre os sensores.
+O código de teste do MPU-9250 nos forneceu dados do acelerômetro, do giroscópio, do magnetômetro - todos esses em 3 eixos - e de temperatura. Há uma diferença considerável na temperatura percebida por esse sensor e as percebidas pelo BMP280 e BMP388. Uma diferença é esperada devido à imprecisão, porém está sob estudo como torná-la menor.
 
 ![img](../../../../../static/img/docs/hardware/integracao/mpu9250test.png)
 
 
 ### MTK3339
-O código de teste do GPS MTK3339 printa no terminal o que quer que o GPS esteja lendo naquele momento. 
+O código de teste do GPS MTK3339 printa no terminal o que quer que o GPS esteja lendo naquele momento. Esse output aparentemente confuso é esperado, para interpretá-lo existe o [command set](https://cdn-shop.adafruit.com/datasheets/PMTK_A11.pdf) disponibilizado pela Adafruit.
 
 ![img](../../../../../static/img/docs/hardware/integracao/gpstest.png)
 
 
 ### LoRa
-O LoRa do CDHS foi validado a partir de um teste de envio e outro de recebimento de pacotes. O outro LoRa necessário foi montado com um Arduino Uno (como visto na imagem abaixo à esquerda).
+O LoRa do CDHS foi validado a partir de um teste de envio e recebimento de pacotes. Um outro LoRa foi necessário, tendo sido montado com um Arduino Uno (como visto na imagem abaixo à esquerda).
 
-Os dois testes foram bem sucedidos, provando que o LoRa do CDHS é capaz tanto de enviar quanto de receber pacotes a uma taxa altíssima.
+Os dois testes foram bem sucedidos, provando que o LoRa do CDHS é capaz tanto de enviar quanto de receber pacotes.
 
 ![img](../../../../../static/img/docs/hardware/integracao/lorahardtest.jpeg)
 
@@ -100,19 +100,19 @@ Código utilizado para o receiver (esquerda) e transmitter (direita).
 
 
 ### MicroSD Adapter
-O objetivo do teste com o adaptador do cartão microSD era comprovar que através dele nós somos capazes de acessar o cartão, escrever alguma coisa e salvar essa informação - o que de fato foi alcançado.
+O objetivo do teste com o adaptador do cartão microSD era comprovar que através dele nós somos capazes de acessar o cartão, escrever alguma coisa e salvar essa informação - o que de fato foi observado.
 
 ![img](../../../../../static/img/docs/hardware/integracao/microsdtest.png)
 ![img](../../../../../static/img/docs/hardware/integracao/microsdtestfile.png)
 
 
 ## Mudanças Necessárias
-Conforme os testes foram sendo realizados, algumas mudanças foram percebidas como necessárias no circuito. As mudanças a serem feitas no Altium são:
-- Trocar na Board (altium) os capacitores do EPS por eletrolíticos;
+Conforme os testes foram sendo realizados, algumas mudanças foram percebidas como necessárias no circuito. As mudanças que precisam ser feitas no Altium são:
+- Simular LM7805 com e sem [capacitor eletrolítico](https://electronics.stackexchange.com/questions/288368/selecting-the-correct-input-output-capacitors-for-a-7805); Prot:x: Ofc:x:
 - Trocar alimentação do GY-91 do VIN para o 3V3; Prot:heavy_check_mark: Ofc:heavy_check_mark:
-- Deixar apenas um resistor no SDA e outro no SCL, de preferência próximo à entrada dessas linhas no Teensy; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+- Deixar apenas um resistor no SDA e outro no SCL; Prot:heavy_check_mark: Ofc:heavy_check_mark:
 - Trocar layer do SCK na entrada pro Teensy; Prot:heavy_check_mark: Ofc:heavy_check_mark:
-- Trocar pino de SCK (SPI) para o pino 13; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+- Trocar pino de SCK para o pino 13; Prot:heavy_check_mark: Ofc:heavy_check_mark:
 - Trocar pino do buzzer para o pino 32; Prot:heavy_check_mark: Ofc:heavy_check_mark:
-- Colocar SDO do BMP388 no 3v3; Prot Ofc
-- Colocar SDO do GY-91 no GND; Prot Ofc
+- Colocar SDO do BMP388 no 3v3; Prot:heavy_check_mark: Ofc Prot:heavy_check_mark:
+- Colocar SDO do GY-91 no GND; Prot:heavy_check_mark: Ofc:heavy_check_mark:
