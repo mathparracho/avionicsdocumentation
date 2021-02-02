@@ -6,9 +6,6 @@ module.exports = {
         {
             'Aurora v2': [
                 {
-                    Software: ['aurorav2/software/testes'],
-                },
-                {
                     Hardware: [
                         {
                             Placas: ['aurorav2/hardware/placas/eps', 'aurorav2/hardware/placas/cdhs', 'aurorav2/hardware/placas/rec', 'aurorav2/hardware/placas/cam',
@@ -24,22 +21,24 @@ module.exports = {
                             Fresadora: ['aurorav2/hardware/fresadora/dicas'],
                         }
                     ],
-                }
+                },
+                {
+                    Software: ['aurorav2/software/testes'],
+                },
             ], 
         },
         {
             Quimera: [
-                {
-                    Software: [
-                        {
-                        'Air Break': ['quimera/software/airbreak/algoritmo'],
-                        }
-                    ],
-                },
+                'quimera/arquitetura',
                 {
                     Hardware: [
                         {
                         'Tubo de Pitot': ['quimera/hardware/tubodepitot/sensores'],
+                        }
+                    ],
+                    Software: [
+                        {
+                        'Air Break': ['quimera/software/airbreak/algoritmo'],
                         }
                     ],
                 },
