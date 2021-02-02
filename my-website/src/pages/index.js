@@ -22,6 +22,19 @@ const features = [
     },
     {
         title: (
+            <a href="docs/aurorav2/hardware/placas/eps">
+            Hardware
+          </a>
+        ),
+        imageUrl: 'img/undraw_hardware.svg',
+        description: (
+            <>
+        Boas práticas do Altium; esquemáticos, PCBs...
+        </>
+        ),
+    },
+    {
+        title: (
           <a href="docs/aurorav2/software/testes">
             Software
           </a>
@@ -30,19 +43,6 @@ const features = [
         description: (
         <>
         Trechos de código; sensores; boas práticas...  
-        </>
-        ),
-    },
-    {
-        title: (
-          <a href="docs/aurorav2/hardware/placas/eps">
-            Hardware
-          </a>
-        ),
-        imageUrl: 'img/undraw_hardware.svg',
-        description: (
-        <>
-        Boas práticas do Altium; esquemáticos, PCBs...
         </>
         ),
     }
