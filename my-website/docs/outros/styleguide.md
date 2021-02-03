@@ -201,6 +201,12 @@ This is a warning
 
 :::
 
+:::tip Dica
+
+You can give another name for the admonition like this
+
+:::
+
 You can write JSX and use React components within your Markdown thanks to [MDX](https://mdxjs.com/).
 
 export const Highlight = ({children, color}) => ( <span style={{
