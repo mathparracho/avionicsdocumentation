@@ -29,3 +29,5 @@ Ainda não temos muitos detalhes sobre a apresentação do PDR do Quimera. Caso 
 
 ### Gabriel
 - Baixar OrCad, simular novo design do MOSFET e simular circuito completo da REC (31/01).
+
+*Obs: prazos do Aurora adiados por conta da ênfase dada no PDR*
