@@ -54,42 +54,68 @@ Além disso, outros detalhes tiveram que ser observados:
 - Quick-release da coifa com a aviônica
 - Cabo umbilical + Quick-release do datalogger com o foguete
 
+Veja abaixo a arquitetura completa da eletrônica do Quimera:
+
 ![img](/img/docs/quimera/arquitetura/fullrocket.png)
 
-*Arquitetura completa do Quimera*
 ## Nova REC
-Como a 
+![img](/img/docs/quimera/arquitetura/rocketREC.png)
+
+Os paraquedas no Aurora eram acionados através da ação de motores controlados pela aviônica. No Quimera os motores serão substituídos por Electric Matches - também chamados de e-matches ou skibs. De acordo com as informações do fabricante dos skibs que nós utilizamos, a corrente necessária para ativá-los é de 400 mA. Como verificamos no projeto passado que a corrente que seria utilizada pelos motores era de 450 mA, ou seja, maior, e que nós já éramos capazes de fornecer isso, podemos inferir que não haverá problemas no novo design.
+
+Um outro detalhe no uso dos skibs é a boa-prática de se colocar resistores de pulldown nos pinos de entrada. Isso evita que a tensão nesses pinos flutue e o skib seja acionado inadvertidamente.
+
+O subsistema de Recuperação exige apenas dois skibs, um para cada paraquedas. Para isso, utilizaremos dois conectores de duas vias na placa da REC. 
 
 ## Apogee Control System (ACS)
+![img](/img/docs/quimera/arquitetura/rocketACS.png)
 ### ACS - Pitot Tube
-<br />
-<br />
-<br />
+O tubo de Pitot fica na coifa do foguete e serve para calcular a velocidade de deslocamento, o que permite à aviônica se orientar e poder controlar de forma eficiente o air brake.
+
+Utilizando o príncipio de Bernoulli podemos obter o valor da velocidade através de duas medidas distintas: a pressão estática e a pressão total - ou seja, a pressão do fluido não sofrendo ação da velocidade do foguete e a pressão com ação da velocidade. 
+
+O modelo utilizado no Aurora Quimera é bem simples: dois sensores de pressão medindo cada tipo de pressão e um sensor de temperatura para controle de dados. Todos estes sensores são conectados à PMM, onde o Teensy irá calcular a velocidade e trabalhar em cima disso. 
+
+A temperatura será medida por um termopar tipo K e um  módulo Max6675. Até o momento não foi possível determinar qual sensor de pressão será utilizado. Os principais candidatos são sensores de pressão absoluta ou transdutores de pressão.
 
 #### Comunicação Coifa-Aviônica
-<br />
-<br />
-<br />
+Entre o ACS-Pitot e o módulo central da aviônica existe o módulo da Recuperação. 
 
 ### ACS - Air Brake
-<br />
-<br />
-<br />
+Uma das novidades do Quimera é a utilização do Air Brake, cuja função é auxiliar o foguete a atingir o apogeu desejado com maior precisão.
+
+A partir dos dados coletados dos sensores são calculadas a velocidade e a posição do foguete. A partir dessas informações é determinado o apogeu esperado. Se esse apogeu for maior que o desejado, é acionado o motor que controla as lâminas do Air Brake e essas por sua vez se abrem na lateral do foguete, aumentando a força de arrasto e diminuindo o apogeu do foguete.
+
+O Air Brake também pode ser usado para diminuir a velocidade de queda na fase de recuperação do foguete.
+
+O motor que vai controlar o Air Brake vai ser um servo motor com tensão de alimentação de  6v. Após um estudo de diferentes opções, chegamos em dois possíveis modelos: o Spektrum A6180 e o MG996R. O MG996R tem um torque de operação maior e é mais barato, no entanto sua documentação na internet é um pouco imprecisa comparada com a do Spektrum.
+
+O algoritmo de controle do Air Brake é sistema de controle de malha fechada, ou seja, a saída do sistema é utilizada como entrada, gerando um ciclo.
+
+Aqui temos um fluxograma que resume como o algoritmo de controle do Air Brake vai funcionar.
+
+O estado do foguete é lido pelos sensores e depois passa por um filtro de Kalman, que prevê o comportamento do foguete e compara a previsão com os dados do sensor. Isso diminui os ruídos e mescla os dados do altímetro, do tubo de pitot e do acelerômetro pra ter um dado mais confiável  de modo a se chegar numa medição mais precisa. Esse estado do foguete é então comparado com valores experimentais pré-definidos de qual deve ser o ângulo de abertura do Air Brake. Esse valor é mandado pro motor, que gera um novo estado do foguete e o ciclo se repete.
+
+Importante ressaltar que esse algoritmo só entra em ação quando o motor para de queimar.
 
 ## Propulsion Sensing and Control System (PSCS)
-<br />
-<br />
-<br />
-
+![img](/img/docs/quimera/arquitetura/rocketPSCS.png)
 ### PSCS - Sensors
-<br />
-<br />
-<br />
+O PSCS irá sensoriar tanto a pressão quanto a temperatura do tanque do oxidante e da câmara de combustão. Os dados obtidos servirão para que nosso microcontrolador possa controlar as válvulas de forma segura e eficiente. Além disso, esses dados servirão para análise e estudos futuros.
+
+O tanque terá uma temperatura de ambiente (até 40°) e uma pressão de 5 a 5,8 MPa. Por estas razões, foi escolhido um transdutor de pressão PFT que mede até 10MPa e funciona até 100°C.
+
+A câmara possui condições mais extremas. Com a combustão, temos uma  temperatura de até 300°C e uma pressão que varia entre 3 MPa e 6 MPa. Por isso, foi utilizado um termopar tipo K com módulo interfaceador Max6675 para medição de temperatura. Já a medição de pressão será feita com um sensor de pressão que funciona em altas temperaturas, que você pode encontrar com o nome de Type 6025A.
 
 ### PSCS - Valves
-<br />
-<br />
-<br />
+A aviônica vai ser responsável pelo controle de duas válvulas: a da câmara de 
+combustão e a válvula de vent.
+
+A válvula de vent só precisa ser aberta ou fechada, ou seja, não é necessário modular o quanto de fluido que a atravessa. Por conta disso optamos pela utilização de uma válvula solenóide para o seu controle. A solenóide da parker foi escolhida por ter um baixo consumo de potência aliado a uma pressão diferencial máxima alta.
+
+A válvula da câmara de combustão, por outro lado, futuramente será modulada, portanto foi decidido que teríamos uma válvula esfera controlada por um motor. Pela necessidade de velocidade e precisão do controle foi escolhido um servo motor para fazer essa atuação. Foram consideradas válvulas esferas já motorizadas, entretanto as encontradas tem pressão máxima de operação muito baixas e tempo de abertura muito alto.
+
+[falar da válvula esfera escolhida]
 
 ### PSCS - Ignition Sensing
 <br />
