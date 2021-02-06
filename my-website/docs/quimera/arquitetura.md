@@ -54,10 +54,11 @@ Além disso, outros detalhes tiveram que ser observados:
 - Quick-release da coifa com a aviônica
 - Cabo umbilical + Quick-release do datalogger com o foguete
 
+![img](/img/docs/quimera/arquitetura/fullrocket.png)
+
+*Arquitetura completa do Quimera*
 ## Nova REC
-<br />
-<br />
-<br />
+Como a 
 
 ## Apogee Control System (ACS)
 ### ACS - Pitot Tube

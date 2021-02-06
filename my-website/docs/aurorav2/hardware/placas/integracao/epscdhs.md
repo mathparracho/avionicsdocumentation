@@ -6,7 +6,7 @@ sidebar_label: EPS + CDHS
 
 *Observação*: Todos os testes nos sensores do CDHS dependem da energia fornecida pelo EPS, por isso os testes com esses sensores estão sendo armazenados nesta página.
 
-![img](../../../../../static/img/docs/hardware/integracao/int_epscdhs.jpeg)
+![img](/img/docs/aurora/hardware/integracao/int_epscdhs.jpeg)
 
 ## Informações sobre os módulos
 - INA219
@@ -56,36 +56,36 @@ No processo final de validação das placas é necessário testar todos os senso
 ### Endereços I2C
 Usamos o I2C Scanner para identificar os endereços dos módulos I2C. Percebemos que temos 4 dispositivos. Na ordem: 0x40 (INA219), 0x68 (MPU-9250), 0x76 (BMP280), 0x77 (BMP388).
 
-![img](../../../../../static/img/docs/hardware/integracao/i2cscanneroutput.png)
+![img](/img/docs/aurora/hardware/integracao/i2cscanneroutput.png)
 
 ### INA219
 O código de exemplo do INA219 nos forneceu a tensão das baterias, a corrente que atravessa o componente e a potência consumida pelo circuito.
 
-![img](../../../../../static/img/docs/hardware/integracao/inatest.png)
+![img](/img/docs/aurora/hardware/integracao/inatest.png)
 
 
 ### BMP388
 O BMP388 possui funções capazes de nos fornecer dados de temperatura, pressão, altitude e outros dados. O código de teste printou na tela esses 3 dados. Devemos fornecer a pressão a nível do mar local na constante SEALEVELPRESSURE_HPA, pois ela é utilizada nos cálculos.
 
-![img](../../../../../static/img/docs/hardware/integracao/bmp388test.png)
+![img](/img/docs/aurora/hardware/integracao/bmp388test.png)
 
 ### GY-91
 #### BMP280
 O BMP280 é bem semelhante ao BMP388 nas suas capacidades. Também fornecemos a pressão a nível do mar local, dessa vez como parâmetro da função bmp.readAltitude(). Foi observada uma discrepância muito grande dos dados de pressão - e, consequentemente, de altitude - adquiridos pelo BMP280 em comparação aos do BMP388, mesmo que ambos estivessem com a mesmo input de pressão do nível do mar. O motivo dessa diferença está sendo estudado.
 
 
-![img](../../../../../static/img/docs/hardware/integracao/bmp280test.png)
+![img](/img/docs/aurora/hardware/integracao/bmp280test.png)
 
 #### MPU-9250
 O código de teste do MPU-9250 nos forneceu dados do acelerômetro, do giroscópio, do magnetômetro - todos esses em 3 eixos - e de temperatura. Há uma diferença considerável na temperatura percebida por esse sensor e as percebidas pelo BMP280 e BMP388. Uma diferença é esperada devido à imprecisão, porém está sob estudo como torná-la menor.
 
-![img](../../../../../static/img/docs/hardware/integracao/mpu9250test.png)
+![img](/img/docs/aurora/hardware/integracao/mpu9250test.png)
 
 
 ### MTK3339
 O código de teste do GPS MTK3339 printa no terminal o que quer que o GPS esteja lendo naquele momento. Esse output aparentemente confuso é esperado, para interpretá-lo existe o [command set](https://cdn-shop.adafruit.com/datasheets/PMTK_A11.pdf) disponibilizado pela Adafruit.
 
-![img](../../../../../static/img/docs/hardware/integracao/gpstest.png)
+![img](/img/docs/aurora/hardware/integracao/gpstest.png)
 
 
 ### LoRa
@@ -93,17 +93,17 @@ O LoRa do CDHS foi validado a partir de um teste de envio e recebimento de pacot
 
 Os dois testes foram bem sucedidos, provando que o LoRa do CDHS é capaz tanto de enviar quanto de receber pacotes.
 
-![img](../../../../../static/img/docs/hardware/integracao/lorahardtest.jpeg)
+![img](/img/docs/aurora/hardware/integracao/lorahardtest.jpeg)
 
 Código utilizado para o receiver (esquerda) e transmitter (direita).
-![img](../../../../../static/img/docs/hardware/integracao/lorasofttest.png)
+![img](/img/docs/aurora/hardware/integracao/lorasofttest.png)
 
 
 ### MicroSD Adapter
 O objetivo do teste com o adaptador do cartão microSD era comprovar que através dele nós somos capazes de acessar o cartão, escrever alguma coisa e salvar essa informação - o que de fato foi observado.
 
-![img](../../../../../static/img/docs/hardware/integracao/microsdtest.png)
-![img](../../../../../static/img/docs/hardware/integracao/microsdtestfile.png)
+![img](/img/docs/aurora/hardware/integracao/microsdtest.png)
+![img](/img/docs/aurora/hardware/integracao/microsdtestfile.png)
 
 
 ## Mudanças Necessárias

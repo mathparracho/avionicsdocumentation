@@ -33,15 +33,15 @@ Como os altímetros COTS são alimentados com 7.4V, outra placa foi adicionada. 
 
 ## Esquemático
 ### REC
-![img](../../../../static/img/docs/hardware/rec_schem.jpg)
+![img](/img/docs/aurora/hardware/rec_schem.jpg)
 ### REC_EPS
-![img](../../../../static/img/docs/hardware/receps_schem.jpg)
+![img](/img/docs/aurora/hardware/receps_schem.jpg)
 
 ## PCB
 ### REC
-![img](../../../../static/img/docs/hardware/rec_pcb.png)
+![img](/img/docs/aurora/hardware/rec_pcb.png)
 
 ### REC_EPS
-![img](../../../../static/img/docs/hardware/receps_pcb.png)
+![img](/img/docs/aurora/hardware/receps_pcb.png)
 
 ## Testes no Protótipo
