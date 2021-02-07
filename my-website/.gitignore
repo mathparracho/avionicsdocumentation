@@ -1,8 +1,8 @@
 # Dependencies
 /node_modules
 
-/../config.json
-/../.env
+../config.json
+../.env
 
 # Production
 /build
