@@ -1,6 +1,9 @@
 # Dependencies
 /node_modules
 
+/../config.json
+/../.env
+
 # Production
 /build
 
@@ -18,6 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-../config.json
-../.env
