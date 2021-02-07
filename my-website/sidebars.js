@@ -45,7 +45,7 @@ module.exports = {
             ],
         },
         {
-            Outros: ['outros/dicasgerais', 'outros/styleguide'],
+            Outros: ['outros/dicasgerais', 'outros/styleguide', 'outros/ideias'],
         }
     ],
 };
