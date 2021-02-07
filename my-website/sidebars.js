@@ -38,7 +38,7 @@ module.exports = {
                     ],
                     Software: [
                         {
-                        'Air Break': ['quimera/software/airbreak/algoritmo'],
+                        'Air Brake': ['quimera/software/airbrake/algoritmo'],
                         }
                     ],
                 },
