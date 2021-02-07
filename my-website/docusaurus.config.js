@@ -29,6 +29,11 @@ module.exports = {
                 // },
             ],
         },
+        algolia: {
+            apiKey: '51e232420d12683f88028bcf7936fe69',
+            indexName: 'avn',
+            appId: 'MY3C98EGQ8',
+        },
         footer: {
             style: 'dark',
             links: [{
