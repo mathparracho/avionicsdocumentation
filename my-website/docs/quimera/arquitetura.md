@@ -131,8 +131,9 @@ A válvula da câmara de combustão, por outro lado, futuramente será modulada,
 [falar da válvula esfera escolhida]
 
 ### PSCS - Ignition Sensing
-Como comentado nos requisitos, o controle das válvulas não pode ser feito através de telemetria wireless por ser crucial para o sucesso da missão. Portanto, devem ter cabos entrando no foguete que se comunicam com a aviônica e controlam as válvulas. Escolhemos um cabo único e que possui múltiplas linhas dentro dele, afinal precisamos de sinal de ground, vent, abort e ignite.
+Como comentado nos requisitos, o controle das válvulas não pode ser feito através de telemetria wireless por ser crucial para o sucesso da missão. Portanto, devem ter cabos entrando no foguete que se comunicam com a aviônica e controlam as válvulas. Escolhemos um cabo único e que possui múltiplas linhas dentro dele, afinal precisamos de sinal de ground, vent, abort e ignite. Além disso, esse cabo deve ser capaz de se desconectar facilmente do foguete após a ignição.
 
+Esse cabo tem a mesma origem que o skib responsável pela ignição: o datalogger. Os comandos das válvulas são emitidos pela equipe de operação lá e transmitidos para o foguete. O comando de ignite possui uma peculiaridade: ele simultaneamente detonará o skib e abrirá a válvula da câmara de combustão. Esses dois eventos devem ocorrer ao mesmo tempo para que a ignição seja bem feita.
 
 ![img](/img/docs/quimera/arquitetura/ignitionsensing.png)
 
