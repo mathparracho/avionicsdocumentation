@@ -7,3 +7,5 @@ sidebar_label: Sensores
 :::caution Atenção
 
 **Página em desenvolvimento**
+
+:::

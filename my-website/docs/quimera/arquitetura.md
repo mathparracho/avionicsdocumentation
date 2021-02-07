@@ -58,6 +58,14 @@ Veja abaixo a arquitetura completa da eletrônica do Quimera:
 
 ![img](/img/docs/quimera/arquitetura/fullrocket.png)
 
+A interface entre o ACS, o PSCS e a aviônica é feita através de *checkpoint boards*. O objetivo dessas placas é:
+- fazer o fornecimento de energia para os sensores e motores
+- realizar a comunicação com os componentes distantes através de conectores
+- realizar a comunicação com o teensy através do barramento principal
+
+Ou seja, essas placas possuirão baterias, reguladores de tensão adequados, conectores mini-fit e conectores de 40 pinos. Veja abaixo o diagrama dos sistemas com o interfaceamento realizado pelas checkpoint boards.
+
+![img](/img/docs/quimera/arquitetura/boardslayout.png)
 ## Nova REC
 ![img](/img/docs/quimera/arquitetura/rocketREC.png)
 
@@ -81,7 +89,9 @@ Até o momento não nos foram apresentados os requisitos para o sensor de press�
 A temperatura será medida por um termopar tipo K e um  módulo Max6675. Ele utiliza funciona com 5V, 50mA e se comunica via SPI.
 
 #### Comunicação Coifa-Aviônica
-Entre o ACS-Pitot e o módulo central da aviônica existe o módulo da Recuperação. 
+O ACS-Pitot, presente na coifa, deve ser capaz de enviar os dados de temperatura e pressão para Teensy, presente no módulo central da aviônica. Entretanto, entre eles há o módulo da Recuperação. Isso inicialmente não parece um problema, já que podemos simplesmente colocar um cabo comunicando as eletrônicas e perpassando pela Recuperação. O problema surge quando consideramos que a coifa eventualmente será ejetada e o módulo da Recuperação, expandido. Conclusão: a comunicação coifa-aviônica deve ser feita com algum tipo de cabo com conector quick-release que se desconectará no momento em que o primeiro paraquedas for acionado. 
+
+A solução encontrada foi utilizar um cabo com conectores mini-Din de 6 pinos - suficiente para o número de sinais desejado - e duas extremidades macho. Nas placas teremos os conectores fêmea. A vantagem desse conector é a facilidade com que ele é removido, portanto ideal para nosso problema.
 
 ### ACS - Air Brake
 Uma das novidades do Quimera é a utilização do Air Brake, cuja função é auxiliar o foguete a atingir o apogeu desejado com maior precisão.
@@ -112,8 +122,7 @@ A câmara possui condições mais extremas. Com a combustão, temos uma  tempera
 [pesquisar mais sensores de altas temperaturas]
 
 ### PSCS - Valves
-A aviônica vai ser responsável pelo controle de duas válvulas: a da câmara de 
-combustão e a válvula de vent.
+A aviônica vai ser responsável pelo controle de duas válvulas: a da câmara de combustão e a válvula de vent.
 
 A válvula de vent só precisa ser aberta ou fechada, ou seja, não é necessário modular o quanto de fluido que a atravessa. Por conta disso optamos pela utilização de uma válvula solenóide para o seu controle. A solenóide da Parker foi escolhida por ter um baixo consumo de potência aliado a uma pressão diferencial máxima alta.
 
@@ -122,6 +131,12 @@ A válvula da câmara de combustão, por outro lado, futuramente será modulada,
 [falar da válvula esfera escolhida]
 
 ### PSCS - Ignition Sensing
-<br />
-<br />
-<br />
+Como comentado nos requisitos, o controle das válvulas não pode ser feito através de telemetria wireless por ser crucial para o sucesso da missão. Portanto, devem ter cabos entrando no foguete que se comunicam com a aviônica e controlam as válvulas. Escolhemos um cabo único e que possui múltiplas linhas dentro dele, afinal precisamos de sinal de ground, vent, abort e ignite.
+
+
+![img](/img/docs/quimera/arquitetura/ignitionsensing.png)
+
+Veja abaixo o diagrama completo do PSCS:
+
+![img](/img/docs/quimera/arquitetura/PSCSdiagram.png)
+
