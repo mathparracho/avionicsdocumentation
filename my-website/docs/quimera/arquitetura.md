@@ -76,7 +76,9 @@ Utilizando o príncipio de Bernoulli podemos obter o valor da velocidade atravé
 
 O modelo utilizado no Aurora Quimera é bem simples: dois sensores de pressão medindo cada tipo de pressão e um sensor de temperatura para controle de dados. Todos estes sensores são conectados à PMM, onde o Teensy irá calcular a velocidade e trabalhar em cima disso. 
 
-A temperatura será medida por um termopar tipo K e um  módulo Max6675. Até o momento não foi possível determinar qual sensor de pressão será utilizado. Os principais candidatos são sensores de pressão absoluta ou transdutores de pressão.
+Até o momento não nos foram apresentados os requisitos para o sensor de pressão - o subsistema de Aerodinâmica ainda está trabalhando nisso. Entretanto, podemos destacar alguns candidatos a sensores. Para pressões menores que 700KPa e temperaturas de até 120°C, podemos utilizar sensores de pressão absoluta da familia MPX. Já para pressões e temperaturas maiores, podemos utilizar transdutores de pressão, cuja desvantagem é seu tamanho bem superior aos dos MTX.
+
+A temperatura será medida por um termopar tipo K e um  módulo Max6675. Ele utiliza funciona com 5V, 50mA e se comunica via SPI.
 
 #### Comunicação Coifa-Aviônica
 Entre o ACS-Pitot e o módulo central da aviônica existe o módulo da Recuperação. 
@@ -84,7 +86,7 @@ Entre o ACS-Pitot e o módulo central da aviônica existe o módulo da Recupera�
 ### ACS - Air Brake
 Uma das novidades do Quimera é a utilização do Air Brake, cuja função é auxiliar o foguete a atingir o apogeu desejado com maior precisão.
 
-A partir dos dados coletados dos sensores são calculadas a velocidade e a posição do foguete. A partir dessas informações é determinado o apogeu esperado. Se esse apogeu for maior que o desejado, é acionado o motor que controla as lâminas do Air Brake e essas por sua vez se abrem na lateral do foguete, aumentando a força de arrasto e diminuindo o apogeu do foguete.
+A partir dos dados coletados dos sensores são calculadas a velocidade e a posição do foguete. A partir dessas informações é determinado o apogeu esperado. Se esse apogeu for maior que o desejado, é acionado o motor que controla as lâminas do Air Brake e essas por sua vez se abrem na lateral do foguete, aumentando a força de arrasto e diminuindo o apogeu do foguete. Importante ressaltar que esse algoritmo só entra em ação quando o motor para de queimar.
 
 O Air Brake também pode ser usado para diminuir a velocidade de queda na fase de recuperação do foguete.
 
@@ -94,24 +96,26 @@ O algoritmo de controle do Air Brake é sistema de controle de malha fechada, ou
 
 Aqui temos um fluxograma que resume como o algoritmo de controle do Air Brake vai funcionar.
 
-O estado do foguete é lido pelos sensores e depois passa por um filtro de Kalman, que prevê o comportamento do foguete e compara a previsão com os dados do sensor. Isso diminui os ruídos e mescla os dados do altímetro, do tubo de pitot e do acelerômetro pra ter um dado mais confiável  de modo a se chegar numa medição mais precisa. Esse estado do foguete é então comparado com valores experimentais pré-definidos de qual deve ser o ângulo de abertura do Air Brake. Esse valor é mandado pro motor, que gera um novo estado do foguete e o ciclo se repete.
+![img](/img/docs/quimera/arquitetura/airbrakepseudo.png)
 
-Importante ressaltar que esse algoritmo só entra em ação quando o motor para de queimar.
+O estado do foguete é lido pelos sensores e depois passa por um filtro de Kalman, que prevê o comportamento do foguete e compara a previsão com os dados do sensor. Isso diminui os ruídos e mescla os dados do altímetro, do tubo de pitot e do acelerômetro pra ter um dado mais confiável  de modo a se chegar numa medição mais precisa. Esse estado do foguete é então comparado com valores experimentais pré-definidos de qual deve ser o ângulo de abertura do Air Brake. Esse valor é mandado pro motor, que gera um novo estado do foguete e o ciclo se repete.
 
 ## Propulsion Sensing and Control System (PSCS)
 ![img](/img/docs/quimera/arquitetura/rocketPSCS.png)
 ### PSCS - Sensors
 O PSCS irá sensoriar tanto a pressão quanto a temperatura do tanque do oxidante e da câmara de combustão. Os dados obtidos servirão para que nosso microcontrolador possa controlar as válvulas de forma segura e eficiente. Além disso, esses dados servirão para análise e estudos futuros.
 
-O tanque terá uma temperatura de ambiente (até 40°) e uma pressão de 5 a 5,8 MPa. Por estas razões, foi escolhido um transdutor de pressão PFT que mede até 10MPa e funciona até 100°C.
+O tanque terá uma temperatura de ambiente (até 40° C) e uma pressão de 5 a 5,8 MPa. Por estas razões, foi escolhido um transdutor de pressão PFT que mede até 10MPa e funciona até 100°C. O PFT possui tensão de alimentação de 10 a 30V e utiliza 3 fios para comunicação.
 
-A câmara possui condições mais extremas. Com a combustão, temos uma  temperatura de até 300°C e uma pressão que varia entre 3 MPa e 6 MPa. Por isso, foi utilizado um termopar tipo K com módulo interfaceador Max6675 para medição de temperatura. Já a medição de pressão será feita com um sensor de pressão que funciona em altas temperaturas, que você pode encontrar com o nome de Type 6025A.
+A câmara possui condições mais extremas. Com a combustão, temos uma  temperatura de até 300°C e uma pressão que varia entre 3 MPa e 6 MPa. Por isso, foi utilizado um termopar tipo K com módulo interfaceador Max6675 para medição de temperatura. Já a medição de pressão será feita com um sensor que funciona em altas temperaturas, que você pode encontrar com o nome de Type 6025A.
+
+[pesquisar mais sensores de altas temperaturas]
 
 ### PSCS - Valves
 A aviônica vai ser responsável pelo controle de duas válvulas: a da câmara de 
 combustão e a válvula de vent.
 
-A válvula de vent só precisa ser aberta ou fechada, ou seja, não é necessário modular o quanto de fluido que a atravessa. Por conta disso optamos pela utilização de uma válvula solenóide para o seu controle. A solenóide da parker foi escolhida por ter um baixo consumo de potência aliado a uma pressão diferencial máxima alta.
+A válvula de vent só precisa ser aberta ou fechada, ou seja, não é necessário modular o quanto de fluido que a atravessa. Por conta disso optamos pela utilização de uma válvula solenóide para o seu controle. A solenóide da Parker foi escolhida por ter um baixo consumo de potência aliado a uma pressão diferencial máxima alta.
 
 A válvula da câmara de combustão, por outro lado, futuramente será modulada, portanto foi decidido que teríamos uma válvula esfera controlada por um motor. Pela necessidade de velocidade e precisão do controle foi escolhido um servo motor para fazer essa atuação. Foram consideradas válvulas esferas já motorizadas, entretanto as encontradas tem pressão máxima de operação muito baixas e tempo de abertura muito alto.
 
