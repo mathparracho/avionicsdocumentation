@@ -4,4 +4,11 @@
 GIT_USER=gabrielaleks USE_SSH=true yarn deploy
 ```
 
-Rode o trecho acima no terminal para fazer o deploy no github pages
+Faz o deploy no github pages
+
+# Search Index Update
+
+```console
+docker run -it --env-file=.env -e "CONFIG=$(cat ./config.json | jq -r tostring)" algolia/docsearch-scraper
+```
+Atualiza os índices do search
