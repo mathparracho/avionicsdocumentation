@@ -34,12 +34,12 @@ module.exports = {
                     Hardware: [
                         {
                         'Tubo de Pitot': ['quimera/hardware/tubodepitot/sensores'],
-                        }
+                        },
                     ],
                     Software: [
                         {
                         'Air Brake': ['quimera/software/airbrake/algoritmo'],
-                        }
+                        },
                     ],
                 },
             ],
