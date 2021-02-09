@@ -100,7 +100,7 @@ A partir dos dados coletados dos sensores são calculadas a velocidade e a posi�
 
 O Air Brake também pode ser usado para diminuir a velocidade de queda na fase de recuperação do foguete.
 
-O motor que vai controlar o Air Brake vai ser um servo motor com tensão de alimentação de  6v. Após um estudo de diferentes opções, chegamos em dois possíveis modelos: o Spektrum A6180 e o MG996R. O MG996R tem um torque de operação maior e é mais barato, no entanto sua documentação na internet é um pouco imprecisa comparada com a do Spektrum.
+O motor que vai controlar o Air Brake vai ser um servo motor com tensão de alimentação de 6v. Após um estudo de diferentes opções, chegamos em dois possíveis modelos: o Spektrum A6180 e o MG996R. O MG996R tem um torque de operação maior e é mais barato, no entanto sua documentação na internet é um pouco imprecisa comparada com a do Spektrum. Continuamos a pesquisa e percebemos que o MG996R atendia os nossos requisitos, portanto o escolhemos. 
 
 O algoritmo de controle do Air Brake é sistema de controle de malha fechada, ou seja, a saída do sistema é utilizada como entrada, gerando um ciclo.
 
@@ -117,18 +117,18 @@ O PSCS irá sensoriar tanto a pressão quanto a temperatura do tanque do oxidant
 
 O tanque terá uma temperatura de ambiente (até 40° C) e uma pressão de 5 a 5,8 MPa. Por estas razões, foi escolhido um transdutor de pressão PFT que mede até 10MPa e funciona até 100°C. O PFT possui tensão de alimentação de 10 a 30V e utiliza 3 fios para comunicação.
 
-A câmara possui condições mais extremas. Com a combustão, temos uma  temperatura de até 300°C e uma pressão que varia entre 3 MPa e 6 MPa. Por isso, foi utilizado um termopar tipo K com módulo interfaceador Max6675 para medição de temperatura. Já a medição de pressão será feita com um sensor que funciona em altas temperaturas, que você pode encontrar com o nome de Type 6025A.
-
-[pesquisar mais sensores de altas temperaturas]
+A câmara possui condições mais extremas. Com a combustão, temos uma  temperatura de até 300°C e uma pressão que varia entre 3 MPa e 6 MPa. Por isso, foi utilizado um termopar tipo K com módulo interfaceador Max6675 para medição de temperatura. Já a medição de pressão será feita com um sensor que funciona em altas temperaturas, que você pode encontrar com o nome de Type 6025A. Também vimos alguns sensores da Omega, porém eles são consideravelmente caros.
 
 ### PSCS - Valves
 A aviônica vai ser responsável pelo controle de duas válvulas: a da câmara de combustão e a válvula de vent.
 
 A válvula de vent só precisa ser aberta ou fechada, ou seja, não é necessário modular o quanto de fluido que a atravessa. Por conta disso optamos pela utilização de uma válvula solenóide para o seu controle. A solenóide da Parker foi escolhida por ter um baixo consumo de potência aliado a uma pressão diferencial máxima alta.
 
-A válvula da câmara de combustão, por outro lado, futuramente será modulada, portanto foi decidido que teríamos uma válvula esfera controlada por um motor. Pela necessidade de velocidade e precisão do controle foi escolhido um servo motor para fazer essa atuação. Foram consideradas válvulas esferas já motorizadas, entretanto as encontradas tem pressão máxima de operação muito baixas e tempo de abertura muito alto.
+A válvula da câmara de combustão, por outro lado, futuramente será modulada, portanto foi decidido que teríamos uma válvula esfera controlada por um motor. 
 
-[falar da válvula esfera escolhida]
+Pela necessidade de velocidade e precisão do controle foi escolhido um servo motor para fazer essa atuação. Foram consideradas válvulas esferas já motorizadas, entretanto as encontradas tem pressão máxima de operação muito baixas e tempo de abertura muito alto. Escolhemos uma válvula SS-45TF8 da Swagelok e um servomotor MG996R. Veja abaixo um exemplo desse servo atuando em uma válvula esfera.
+
+![img](/img/docs/quimera/arquitetura/servoballvalve.gif)
 
 ### PSCS - Ignition Sensing
 Como comentado nos requisitos, o controle das válvulas não pode ser feito através de telemetria wireless por ser crucial para o sucesso da missão. Portanto, devem ter cabos entrando no foguete que se comunicam com a aviônica e controlam as válvulas. Escolhemos um cabo único e que possui múltiplas linhas dentro dele, afinal precisamos de sinal de ground, vent, abort e ignite. Além disso, esse cabo deve ser capaz de se desconectar facilmente do foguete após a ignição.
@@ -140,4 +140,37 @@ Esse cabo tem a mesma origem que o skib responsável pela ignição: o datalogge
 Veja abaixo o diagrama completo do PSCS:
 
 ![img](/img/docs/quimera/arquitetura/PSCSdiagram.png)
+
+## Angle of Attack Sensor (AoA)
+Será adicionado no Quimera um sensor de ângulo de ataque (AoA), cujo objetivo é determinar o ângulo entre a linha de referência do foguete e o vetor de movimento relativo entre o foguete e o ar. Nós nos baseamos no projeto feito por um grupo da Universidade de Washington para determinar a arquitetura. Como esse sistema é completamente independente dos outros, utilizaremos um arduino pro mini junto com dois BMP280, que medirão a pressão e a temperatura, e um encoder rotativo, que traduzirá o movimento mecânico do elemento mecânico exposto ao ar em pulsos elétricos, que por sua vez serão interpretados pelo arduino.
+
+![img](/img/docs/quimera/arquitetura/aoasensor.png)
+
+## Anexos
+### Componentes
+Tabelas com os componentes principais em função do sistema
+
+| ACS |
+| --- |
+| Sensor de pressão (a definir) |
+| [Termopar tipo K + max6675](https://www.baudaeletronica.com.br/modulo-sensor-de-temperatura-max6675-termopar-tipo-k.html) |
+| [Servo motor MG996R](https://www.baudaeletronica.com.br/servo-mg996r-towerpro.html?gclid=Cj0KCQiA6t6ABhDMARIsAONIYywdoMVOYOYC5DlpasZksVzCao7QQ1go2BI-NW4f3LegV_NhCYTm_n0aAkR8EALw_wcB) |
+
+| PSCS |
+| ---- |
+| 2x [Transdutor de pressão PX119-1KGI](https://www.omega.com/en-us/pressure-measurement/pressure-transducers/p/PX119) |
+| 2x [Termopar tipo K + max6675](https://www.baudaeletronica.com.br/modulo-sensor-de-temperatura-max6675-termopar-tipo-k.html)      |
+| [Válvula Solenóide U121V5595-492210C2](https://ph.parker.com/br/pt/parker-2-way-normally-closed-1-4-general-purpose-solenoid-valves/u121v5595-492210c2) |
+| [Servo motor MG996R](https://www.baudaeletronica.com.br/servo-mg996r-towerpro.html?gclid=Cj0KCQiA6t6ABhDMARIsAONIYywdoMVOYOYC5DlpasZksVzCao7QQ1go2BI-NW4f3LegV_NhCYTm_n0aAkR8EALw_wcB) |
+| [Válvula esfera SS-45TF8](https://www.swagelok.com/en/catalog/Product/Detail?part=SS-45TF8) |
+
+| AoA |
+| --- |
+| [Arduino Pro Mini](https://www.filipeflop.com/produto/placa-pro-mini-atmega328p-5v-16mhz/) |
+| [BMP280](https://www.filipeflop.com/produto/sensor-de-pressao-e-temperatura-bmp280/) |
+| [Rotary Encoder](https://www.arducore.com.br/encoder-decoder-ky-040-rotacional?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant&gclid=Cj0KCQiA34OBBhCcARIsAG32uvOMu_4o9h9-uwOGpfsd3ZVaV6eMqMNjm266ZzAOhUxLJw_X3vcWvFQaAtHEEALw_wcB) |
+
+### Referências
+Medição de Temperatura da câmara de combustão: https://www.rocketryforum.com/threads/high-temperature-thermocouple-for-combustion-chamber.134580/
+
 
