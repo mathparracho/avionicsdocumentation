@@ -148,7 +148,7 @@ Será adicionado no Quimera um sensor de ângulo de ataque (AoA), cujo objetivo 
 
 ## Anexos
 ### Componentes
-Tabelas com os componentes principais em função do sistema
+Tabelas com os componentes principais em função do sistema:
 
 | ACS |
 | --- |
