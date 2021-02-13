@@ -126,9 +126,9 @@ A válvula de vent só precisa ser aberta ou fechada, ou seja, não é necessár
 
 A válvula da câmara de combustão, por outro lado, futuramente será modulada, portanto foi decidido que teríamos uma válvula esfera controlada por um motor. 
 
-Pela necessidade de velocidade e precisão do controle foi escolhido um servo motor para fazer essa atuação. Foram consideradas válvulas esferas já motorizadas, entretanto as encontradas tem pressão máxima de operação muito baixas e tempo de abertura muito alto. Escolhemos uma válvula SS-45TF8 da Swagelok e um servomotor MG996R. Veja abaixo um exemplo desse servo atuando em uma válvula esfera.
+Pela necessidade de velocidade e precisão do controle foi escolhido um servo motor para fazer essa atuação. Foram consideradas válvulas esferas já motorizadas, entretanto as encontradas tem pressão máxima de operação muito baixas e tempo de abertura muito alto. Escolhemos uma válvula SS-45TF8 da Swagelok e um servomotor MG996R. Veja abaixo uma imagem exemplo desse servo atuando em uma válvula esfera. 
 
-![img](/img/docs/quimera/arquitetura/servoballvalve.gif)
+![img](/img/docs/quimera/arquitetura/servoballvalve.png)
 
 ### PSCS - Ignition Sensing
 Como comentado nos requisitos, o controle das válvulas não pode ser feito através de telemetria wireless por ser crucial para o sucesso da missão. Portanto, devem ter cabos entrando no foguete que se comunicam com a aviônica e controlam as válvulas. Escolhemos um cabo único e que possui múltiplas linhas dentro dele, afinal precisamos de sinal de ground, vent, abort e ignite. Além disso, esse cabo deve ser capaz de se desconectar facilmente do foguete após a ignição.
