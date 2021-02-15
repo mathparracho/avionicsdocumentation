@@ -107,7 +107,7 @@ As branches de hotfix surgem da necessidade de se resolver rapidamente algum pro
 ### Visão Geral
 A imagem abaixo reúne o fluxo de trabalho completo:
 
-[<img src="/static/img/docs/aurora/software/git/fullworkflow.png" width="60%"/>](/img/docs/aurora/software/git/fullworkflow.png)
+![img](/img/docs/aurora/software/git/fullworkflow.png)
 
 ## Uso no Aurora v2
 O código necessário na aviônica é extensivo e deve compreender todos os sensores e módulos presentes no EPS, CDHS e CAM. Para isso, todos os membros se dedicam a alguma atividade e o Git Workflow é empregado. Temos branches de feature pra cada um dos módulos presentes nas placas.
