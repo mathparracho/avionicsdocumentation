@@ -35,7 +35,7 @@ const features = [
     },
     {
         title: (
-          <a href="docs/aurorav2/software/testes">
+          <a href="docs/aurorav2/software/git">
             Software
           </a>
         ),

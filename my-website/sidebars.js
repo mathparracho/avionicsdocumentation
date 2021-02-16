@@ -23,7 +23,7 @@ module.exports = {
                     ],
                 },
                 {
-                    Software: ['aurorav2/software/testes', 'aurorav2/software/git'],
+                    Software: ['aurorav2/software/git', 'aurorav2/software/testes'],
                 },
             ], 
         },
