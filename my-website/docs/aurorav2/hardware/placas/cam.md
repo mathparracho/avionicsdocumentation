@@ -33,6 +33,14 @@ O modo padrão quando a câmera é iniciada é o de 720p. Aperte o botão Modo u
 Para ativar o modo noturno pressione o botão de on/off por dois segundos e solte. Para desligar é a mesma coisa. 
 
 A ativação do modo de detecção de movimento pode ser feita em 720p e em 1080p. Vá para o modo desejado e pressione o botão de Modo por 3 segundos para ativar. A gravação é iniciada quando algum movimento é detectado.
+
+Parte interna da câmera:
+
+![img](/img/docs/aurora/hardware/camopen1.jpg)
+
+![img](/img/docs/aurora/hardware/camopen2.jpg)
+
+A bateria interna da câmera é uma LiPo, logo varia de 4.2V (completamente carregada) a 2.7V (completamente descarregada). Sua capacidade é de 200mAh. A tensão para carga é de 5V.
 ## Testes
 Pra diferenciar, uma das câmeras é chamada de preta e a outra de branca (essa é a que tem uma faixa branca de adesivo embaixo dos botões)
 ### Tempo de Carga
@@ -45,14 +53,22 @@ Pra diferenciar, uma das câmeras é chamada de preta e a outra de branca (essa 
 - Teste 1-preta (720p): 35min
 - Teste 2-preta (1080p): 
 
-![img](/img/docs/aurora/hardware/camopen1.jpg)
+### Teste de imagem
+#### 720p
+<iframe src="https://drive.google.com/file/d/143g6DFIdr5MWDK8CQkfaOSXlGVvIr4ay/preview" width="100%" height="480" allowfullscreen="allowfullscreen"></iframe>
 
-![img](/img/docs/aurora/hardware/camopen2.jpg)
+#### 1080p
+<iframe src="https://drive.google.com/file/d/19KBzzOv6EgZHda-dK3Szl28xCJ_rxRMJ/preview" width="100%" height="480" allowfullscreen="allowfullscreen"></iframe>
+
+#### Foto
+![img](/img/docs/aurora/hardware/cam_pic.jpg)
 
 ## Integração no Foguete
 [Em Progresso]
 
 A ideia é prender as câmeras no foguete de maneira que uma esteja apontando pra cima e outra pra baixo. Uma placa com baterias fará o fornecimento de energia para as duas durante o vôo. Como a gravação é iniciada apenas com o aperto do botão de on/off, devemos começar a gravação imediatamente antes do foguete ser lançado.
+
+A placa das câmeras, ou CAM, terá duas baterias 18650 em paralelo e um TP4056 utilizado para recarregá-las sem removê-las do circuito. Terá também dois conectores mini-lock usados para alimentar as câmeras.
 
 ## Referências
 - https://www.youtube.com/watch?v=pFxlfeo9nwk&ab_channel=LGyn
