@@ -36,6 +36,10 @@ Os componentes da placa são:
 ![img](/img/docs/aurora/hardware/eps_schem.jpg)
 
 ## PCB
+### Versão do Protótipo
+![img](/img/docs/aurora/hardware/eps_protpcb.png)
+
+### Versão Atual
 ![img](/img/docs/aurora/hardware/eps_pcb.png)
 
 ## Testes no protótipo
