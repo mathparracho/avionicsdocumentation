@@ -1,14 +1,17 @@
 module.exports = {
     docs: [
         {
-            Reuniões: ['reuniao/0801r', 'reuniao/1301r', 'reuniao/2001r', 'reuniao/2701r', 'reuniao/1002r'],
+            Reuniões: ['reuniao/0801r', 'reuniao/1301r', 'reuniao/2001r', 'reuniao/2701r', 'reuniao/1002r',
+                       'reuniao/1702r'    
+        ],
         },
         {
             'Aurora v2': [
                 {
                     Hardware: [
                         {
-                            Placas: ['aurorav2/hardware/placas/eps', 'aurorav2/hardware/placas/cdhs', 'aurorav2/hardware/placas/rec', 'aurorav2/hardware/placas/cam',
+                            Placas: ['aurorav2/hardware/placas/eps', 'aurorav2/hardware/placas/cdhs',
+                                     'aurorav2/hardware/placas/rec', 'aurorav2/hardware/placas/cam',
                                 {
                                     Integração: ['aurorav2/hardware/placas/integracao/epscdhs']
                                 } 
