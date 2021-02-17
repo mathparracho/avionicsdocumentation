@@ -29,4 +29,4 @@ sidebar_label: 10/02/21
 - Montar apresentação de software
 
 ### Todos
-- Ir ao laboratório na próx semana testar a REC na protoboard
+- Ir ao laboratório na próx semana testar a REC na protoboard.
