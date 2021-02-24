@@ -32,7 +32,7 @@ module.exports = {
                 {
                     Software: ['aurorav2/software/git', 
                         {
-                            Testes: ['aurorav2/software/funcionamento', 'aurorav2/software/leituraescrita'
+                            Testes: ['aurorav2/software/testes/funcionamento', 'aurorav2/software/testes/leituraescrita'
                             ],
                         },
                     ],

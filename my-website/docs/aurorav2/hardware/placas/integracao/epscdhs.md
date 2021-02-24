@@ -51,7 +51,7 @@ sidebar_label: EPS + CDHS
 Na EPS foi verificado que os pinos de potência do barramento estavam recebendo a tensão correta. Porém, na comunicação com o flat cable foi percebido que as tensões não chegavam corretamente. Após uma análise foi percebido que o LM7805 estava mal-soldado. Após feita a correção, o problema foi corrigido.
 
 ## Testes nos módulos
-No processo final de validação das placas é necessário testar todos os sensores individualmente na placa. O código utilizado para isso está documentado [aqui](/docs/aurorav2/software/testes).
+No processo final de validação das placas é necessário testar todos os sensores individualmente na placa. O código utilizado para isso está documentado [aqui](/docs/aurorav2/software/testes/leituraescrita).
 
 ### Endereços I2C
 Usamos o I2C Scanner para identificar os endereços dos módulos I2C. Percebemos que temos 4 dispositivos. Na ordem: 0x40 (INA219), 0x68 (MPU-9250), 0x76 (BMP280), 0x77 (BMP388).
