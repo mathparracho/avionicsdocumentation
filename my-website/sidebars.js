@@ -1,9 +1,13 @@
 module.exports = {
     docs: [
         {
-            Reuniões: ['reuniao/0801r', 'reuniao/1301r', 'reuniao/2001r', 'reuniao/2701r', 'reuniao/1002r',
-                       'reuniao/1702r'    
-        ],
+            Reuniões: [
+                {
+                    '2021': ['reuniao/21/0801r', 'reuniao/21/1301r', 'reuniao/21/2001r', 'reuniao/21/2701r', 'reuniao/21/1002r',
+                       'reuniao/21/1702r', 'reuniao/21/2402r'
+                    ],    
+                },
+            ],
         },
         {
             'Aurora v2': [
@@ -18,7 +22,7 @@ module.exports = {
                             ],
                         },
                         {
-                            Altium: ['aurorav2/hardware/altium/drc'],
+                            Altium: ['aurorav2/hardware/altium/tutorial', 'aurorav2/hardware/altium/drc'],
                         },
                         {
                             Fresadora: ['aurorav2/hardware/fresadora/dicas'],
@@ -26,7 +30,12 @@ module.exports = {
                     ],
                 },
                 {
-                    Software: ['aurorav2/software/git', 'aurorav2/software/testes'],
+                    Software: ['aurorav2/software/git', 
+                        {
+                            Testes: ['aurorav2/software/funcionamento', 'aurorav2/software/leituraescrita'
+                            ],
+                        },
+                    ],
                 },
             ], 
         },
@@ -48,7 +57,7 @@ module.exports = {
             ],
         },
         {
-            Outros: ['outros/dicasgerais', 'outros/styleguide', 'outros/ideias'],
+            Outros: ['outros/dicasgerais', 'outros/ideias', 'outros/styleguide'],
         }
     ],
 };
