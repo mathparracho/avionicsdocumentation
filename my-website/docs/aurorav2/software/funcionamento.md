@@ -1,7 +1,7 @@
 ---
-id: testes
+id: funcionamento
 title: Códigos de Teste
-sidebar_label: Testes
+sidebar_label: Testes de Funcionamento
 ---
 
 Os trechos de código abaixo servem para testar os módulos presentes no EPS e CDHS. Eles foram utilizados durante a validação das placas-protótipo e servem para identificar o funcionamento correto dos sensores. Os pinos já estão de acordo com os utilizados pelo teensy no CDHS.
