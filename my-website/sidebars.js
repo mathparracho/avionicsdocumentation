@@ -3,8 +3,8 @@ module.exports = {
         {
             Reuniões: [
                 {
-                    '2021': ['reuniao/21/0801r', 'reuniao/21/1301r', 'reuniao/21/2001r', 'reuniao/21/2701r', 'reuniao/21/1002r',
-                       'reuniao/21/1702r', 'reuniao/21/2402r'
+                    '2021': ['reuniao/21/0108r', 'reuniao/21/0113r', 'reuniao/21/0120r', 'reuniao/21/0127r',
+                             'reuniao/21/0210r', 'reuniao/21/0217r', 'reuniao/21/0224r'
                     ],    
                 },
             ],
