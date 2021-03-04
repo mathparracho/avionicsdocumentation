@@ -30,7 +30,7 @@ Os componentes da placa são:
 | MicroSD Adapter           |       1       | - |
 | LED                       |       4       | 3x Debugging, 1x GPS |
 | Buzzer                    |       1       | Debugging |
-| Resistor                  |       9       | 4x 4.7kΩ, 1x 72Ω, 3x 220Ω, 1x47Ω |
+| Resistor                  |       7       | 2x 4.7kΩ, 1x 72Ω, 3x 220Ω, 1x47Ω |
 | Capacitor                 |       3       | 1x 47uF, 1x 10nF, 1x 0.1uF |
 
 ## Esquemático e PCB
