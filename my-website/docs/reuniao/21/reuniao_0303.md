@@ -1,7 +1,7 @@
 ---
 id: 0303r
 title: Reunião 03/03/21
-sidebar_label: 23/03/21
+sidebar_label: 03/03/21
 ---
 
 ## Informativos
@@ -20,7 +20,6 @@ sidebar_label: 23/03/21
 ### Fábio
 - Tanto como Parasolid como Step3D dá erro, porém é possível de continuar mexendo. 
 - Traduziu seus textos e colocou no PDR.
-- 
 
 ### Gabriel
 - Testou BMP280 e BMP388
