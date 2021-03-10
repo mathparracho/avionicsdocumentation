@@ -4,7 +4,8 @@ module.exports = {
             Reuniões: [
                 {
                     '2021': ['reuniao/21/0108r', 'reuniao/21/0113r', 'reuniao/21/0120r', 'reuniao/21/0127r',
-                             'reuniao/21/0210r', 'reuniao/21/0217r', 'reuniao/21/0224r', 'reuniao/21/0303r'
+                             'reuniao/21/0210r', 'reuniao/21/0217r', 'reuniao/21/0224r', 'reuniao/21/0303r',
+                             'reuniao/21/0310r'
                     ],    
                 },
             ],
@@ -17,7 +18,9 @@ module.exports = {
                             Placas: ['aurorav2/hardware/placas/eps', 'aurorav2/hardware/placas/cdhs',
                                      'aurorav2/hardware/placas/rec', 'aurorav2/hardware/placas/cam',
                                 {
-                                    Integração: ['aurorav2/hardware/placas/integracao/epscdhs']
+                                    Integração: ['aurorav2/hardware/placas/integracao/epscdhs',
+                                    'aurorav2/hardware/placas/integracao/consumo'
+                                ]
                                 } 
                             ],
                         },

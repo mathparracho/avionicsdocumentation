@@ -116,3 +116,14 @@ Conforme os testes foram sendo realizados, algumas mudanças foram percebidas co
 - Trocar pino do buzzer para o pino 32; Prot:heavy_check_mark: Ofc:heavy_check_mark:
 - Colocar SDO do BMP388 no 3v3; Prot:heavy_check_mark: Ofc Prot:heavy_check_mark:
 - Colocar SDO do GY-91 no GND; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+- Trocar MOSFET do EPS pelo IRF9530; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+- Trocar conectores pelo de pitch 2.0mm:
+    - EPS; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+    - REC; Ofc:heavy_check_mark:
+    - CAM; Ofc:heavy_check_mark:
+- Fazer upload das placas no drive:
+    - EPS; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+    - CDHS; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+    - REC; Prot:x: Ofc:x:
+    - RECB; Prot:x: Ofc:x:
+    - CAM; Prot:x: Ofc:x:
