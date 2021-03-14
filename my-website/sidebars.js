@@ -60,7 +60,7 @@ module.exports = {
             ],
         },
         {
-            Outros: ['outros/dicasgerais', 'outros/ideias', 'outros/styleguide'],
+            Outros: ['outros/dicasgerais', 'outros/ideias', 'outros/inventario', 'outros/styleguide'],
         }
     ],
 };
