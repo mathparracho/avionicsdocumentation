@@ -124,6 +124,6 @@ Conforme os testes foram sendo realizados, algumas mudanças foram percebidas co
 - Fazer upload das placas no drive:
     - EPS; Prot:heavy_check_mark: Ofc:heavy_check_mark:
     - CDHS; Prot:heavy_check_mark: Ofc:heavy_check_mark:
-    - REC; Prot:x: Ofc:x:
-    - RECB; Prot:x: Ofc:x:
+    - REC; Prot:heavy_check_mark: Ofc:heavy_check_mark:
+    - RECB; Prot:heavy_check_mark: Ofc:heavy_check_mark:
     - CAM; Prot:x: Ofc:x:
