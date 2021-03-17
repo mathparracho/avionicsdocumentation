@@ -10,7 +10,7 @@ module.exports = {
     projectName: 'avionicsdocumentation', // Usually your repo name.
     themeConfig: {
         navbar: {
-            title: 'Documentação da Aviônica',
+            title: 'Documentação',
             logo: {
                 alt: 'My Site Logo',
                 src: 'img/rocketslogo.png',
@@ -18,7 +18,7 @@ module.exports = {
             items: [{
                     to: 'docs/',
                     activeBasePath: 'docs',
-                    label: 'Docs',
+                    label: 'Aviônica',
                     position: 'left',
                 }
                 // {to: 'blog', label: 'Blog', position: 'left'},
