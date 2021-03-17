@@ -1,11 +1,11 @@
 module.exports = {
-    docs: [
+    Docs: [
         {
             Reuniões: [
                 {
                     '2021': ['reuniao/21/0108r', 'reuniao/21/0113r', 'reuniao/21/0120r', 'reuniao/21/0127r',
                              'reuniao/21/0210r', 'reuniao/21/0217r', 'reuniao/21/0224r', 'reuniao/21/0303r',
-                             'reuniao/21/0310r'
+                             'reuniao/21/0310r', 'reuniao/21/0317r'
                     ],    
                 },
             ],
@@ -60,7 +60,15 @@ module.exports = {
             ],
         },
         {
+            Conceitos: [
+                {
+                    Testes: ['conceitos/testes/telemetria']
+                },
+                'conceitos/diagramadeclasses', 'conceitos/leituraescrita',
+            ],
+        },
+        {
             Outros: ['outros/dicasgerais', 'outros/ideias', 'outros/inventario', 'outros/styleguide'],
-        }
+        },
     ],
 };
