@@ -49,7 +49,8 @@ sidebar_label: 17/03/21
 - Fazer novo teste com as câmeras
 - Fazer schem e board do PSCS
 - Inserir parte de Conceitos na documentação
-- Teste de leitura e escrita do SD
+    - Teste de leitura e escrita do SD
+- Elaborar diagrama de classes
 
 ## Semana que vem
 - Marcar um dia semana que vem pra irmos no lab e pszrototipar placas, soldar os componentes, validar pmm
