@@ -18,7 +18,8 @@
     "clsx": "^1.1.1",
     "express": "^4.17.1",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "requirejs": "^2.3.6"
   },
   "browserslist": {
     "production": [
