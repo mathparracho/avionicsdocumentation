@@ -43,15 +43,22 @@ Parte interna da câmera:
 A bateria interna da câmera é uma LiPo, logo varia de 4.2V (completamente carregada) a 2.7V (completamente descarregada). Sua capacidade é de 200mAh. A tensão para carga é de 5V.
 ## Testes
 Pra diferenciar, uma das câmeras é chamada de preta e a outra de branca (essa é a que tem uma faixa branca de adesivo embaixo dos botões)
-### Tempo de Carga
-- Teste 1-branca: 
-- Teste 1-preta:
 
 ### Tempo Gravando
 - Teste 1-branca (720p): 40min
 - Teste 2-branca (1080p): 8min
 - Teste 1-preta (720p): 35min
-- Teste 2-preta (1080p): 
+- Teste 2-preta (1080p): 14min
+
+O tempo de gravação nunca alcança a 1h prometida no manual. Como a capacidade da bateria que vem com a câmera é baixa, fizemos um segundo teste. Dessa vez, a bateria alimentando a câmera é a 18650, que possui corrente nominal de 1000mAh. Nesse teste a gravação seguiu direta por 2h15, só foi interrompida porque o cartão SD ficou cheio.
+
+Temos então dois limitantes do tempo de gravação: a bateria e o armazenamento do SD. Aquele que acabar/ficar cheio primeiro interrompe a gravação. Sempre usaremos uma 18650, cuja corrente nominal é de 1000mAh. Portanto, o que pode ser variado é o SD. Podemos escolher um modelo de 8, 16, 32, 64 ou 128 GB.
+
+O consumo da câmera é de 200mAh, portanto da parte da bateria temos 5h de gravação.
+
+Um arquivo de vídeo de 720p com cores e movimento tem em média 700MB para cada 5 minutos. Se escolhermos um cartão de 64GB, poderemos gravar 468 minutos (7 horas e 48 minutos). Se escolhermos um cartão de 128GB, gravamos o dobro (16 horas e 36 minutos), porém precisaríamos de mais energia.
+
+A ideia é colocarmos duas baterias em paralelo, dobrando a corrente fornecida. Elas alimentarão duas câmeras, uma que ficará apontando para cima e outra, para baixo.
 
 ### Teste de imagem
 #### 720p
