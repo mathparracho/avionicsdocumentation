@@ -5,7 +5,7 @@ module.exports = {
                 {
                     '2021': ['reuniao/21/0108r', 'reuniao/21/0113r', 'reuniao/21/0120r', 'reuniao/21/0127r',
                              'reuniao/21/0210r', 'reuniao/21/0217r', 'reuniao/21/0224r', 'reuniao/21/0303r',
-                             'reuniao/21/0310r', 'reuniao/21/0317r'
+                             'reuniao/21/0310r', 'reuniao/21/0317r', 'reuniao/21/0325r'
                     ],    
                 },
             ],
