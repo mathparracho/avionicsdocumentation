@@ -146,6 +146,13 @@ Será adicionado no Quimera um sensor de ângulo de ataque (AoA), cujo objetivo 
 
 ![img](/img/docs/quimera/arquitetura/aoasensor.png)
 
+#### Temporário
+
+![img](/img/docs/quimera/arquitetura/aoa1.png)
+![img](/img/docs/quimera/arquitetura/aoa2.png)
+![img](/img/docs/quimera/arquitetura/board_checkpoint.png)
+
+
 ## Anexos
 ### Componentes
 Tabelas com os componentes principais em função do sistema:
