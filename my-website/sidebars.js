@@ -6,7 +6,7 @@ module.exports = {
                     '2021': ['reuniao/21/0108r', 'reuniao/21/0113r', 'reuniao/21/0120r', 'reuniao/21/0127r',
                              'reuniao/21/0210r', 'reuniao/21/0217r', 'reuniao/21/0224r', 'reuniao/21/0303r',
                              'reuniao/21/0310r', 'reuniao/21/0317r', 'reuniao/21/0325r', 'reuniao/21/0331r',
-                             'reuniao/21/0401i'
+                             'reuniao/21/0401i', 'reuniao/21/0407r'
                     ],    
                 },
             ],
@@ -65,7 +65,7 @@ module.exports = {
                 {
                     Testes: ['conceitos/testes/telemetria', 'conceitos/testes/leituraescrita', 'conceitos/testes/cargaedescarga']
                 },
-                'conceitos/diagramadeclasses',
+                'conceitos/diagramadeclasses'
             ],
         },
         {
