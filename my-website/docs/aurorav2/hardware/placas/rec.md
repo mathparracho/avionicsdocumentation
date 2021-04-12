@@ -1,7 +1,7 @@
 ---
 id: rec
-title: REC
-sidebar_label: REC
+title: REC / RECB
+sidebar_label: REC / RECB
 ---
 
 ## Objetivo

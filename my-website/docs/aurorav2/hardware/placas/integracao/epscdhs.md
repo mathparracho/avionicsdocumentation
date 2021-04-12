@@ -126,4 +126,4 @@ Conforme os testes foram sendo realizados, algumas mudanças foram percebidas co
     - CDHS; Prot:heavy_check_mark: Ofc:heavy_check_mark:
     - REC; Prot:heavy_check_mark: Ofc:heavy_check_mark:
     - RECB; Prot:heavy_check_mark: Ofc:heavy_check_mark:
-    - CAM; Prot:x: Ofc:x:
+    - CAM; Prot:heavy_check_mark: Ofc:heavy_check_mark:

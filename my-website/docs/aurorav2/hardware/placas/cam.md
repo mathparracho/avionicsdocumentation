@@ -77,7 +77,9 @@ A ideia é prender as câmeras no foguete de maneira que uma esteja apontando pr
 
 A placa das câmeras, ou CAM, terá duas baterias 18650 em paralelo e um TP4056 utilizado para recarregá-las sem removê-las do circuito. Terá também dois conectores mini-lock usados para alimentar as câmeras.
 
-![img](/img/docs/aurora/hardware/camidea.png)
+![img](/img/docs/aurora/hardware/cam_schem.jpg)
+
+![img](/img/docs/aurora/hardware/cam_board.png)
 
 
 ## Referências
