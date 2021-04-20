@@ -63,11 +63,11 @@ module.exports = {
             ],
         },
         {
-            Conceitos: [
+            Glossario: [
                 {
-                    Testes: ['conceitos/testes/telemetria', 'conceitos/testes/leituraescrita', 'conceitos/testes/cargaedescarga']
+                    Testes: ['glossario/testes/telemetria', 'glossario/testes/leituraescrita', 'glossario/testes/cargaedescarga']
                 },
-                'conceitos/diagramadeclasses'
+                'glossario/diagramadeclasses'
             ],
         },
         {
