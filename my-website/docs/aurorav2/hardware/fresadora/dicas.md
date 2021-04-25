@@ -60,7 +60,7 @@ Uma dica é passar uma fita por baixo. Se arranhar, a altura está adequada.
 ### Desenho das trilhas e alterações da altura da ferramenta
 Carregue o arquivo e envie. Observe como está a espessura das trilhas. 
 
-Caso estiverem muito rasas, edite o código no bloco de notas e procure pela linha "G001-Z0.0400". Esta linha é a responsável pela altura da ferramenta durante a fresa, especialmente o valor após Z. Copie ela e vá em  Editar -> Substituir. Altere 0.0400 para um valor maior e clique em “Substituir tudo”.
+Caso estiverem muito rasas, edite o código no bloco de notas e procure pela linha "G01 Z-0.0400". Esta linha é a responsável pela altura da ferramenta durante a fresa, especialmente o valor após Z. Copie ela e vá em  Editar -> Substituir. Altere 0.0400 para um valor maior e clique em “Substituir tudo”.
 
 ![img](/img/docs/aurora/hardware/fresadora/fresadora3.jpg)
 
