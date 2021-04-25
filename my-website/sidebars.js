@@ -35,11 +35,11 @@ module.exports = {
                     ],
                 },
                 {
-                    Software: ['aurorav2/software/git', 
+                    Software: [ 
                         {
                             Testes: ['aurorav2/software/testes/funcionamento', 'aurorav2/software/testes/leituraescrita'
                             ],
-                        },
+                        }, 'aurorav2/software/diagramadeclasses'
                     ],
                 },
             ], 
@@ -67,7 +67,7 @@ module.exports = {
                 {
                     Testes: ['glossario/testes/telemetria', 'glossario/testes/leituraescrita', 'glossario/testes/cargaedescarga']
                 },
-                'glossario/diagramadeclasses'
+                'glossario/diagramadeclasses', 'glossario/git', 'glossario/maquinadeestados'
             ],
         },
         {
