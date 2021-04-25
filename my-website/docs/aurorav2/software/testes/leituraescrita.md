@@ -4,7 +4,7 @@ title: Teste de Leitura e Escrita do SD
 sidebar_label: Leitura e Escrita
 ---
 
-*Ver [glossário](http://localhost:3000/avionicsdocumentation/docs/glossario/testes/leituraescrita) para mais informações sobre o teste*
+*Ver [glossário](/avionicsdocumentation/docs/glossario/testes/leituraescrita) para mais informações sobre o teste*
 
 O teste de leitura e escrita foi feito usando a biblioteca *SdFat*.
 
