@@ -4,6 +4,8 @@ title: Carga e Descarga das Baterias
 sidebar_label: Carga e Descarga das Baterias
 ---
 
+*Escrito por Daniel Relva*
+
 ## Objetivo
 Uma vez que o EPS tenha sido fabricado, podemos integrá-lo a outros subsistemas e determinar por quanto tempo ele mantém a PMM alimentada. Assumindo que a bateria não esteja vazia, iremos carregá-la completamente antes de iniciar os testes.
 

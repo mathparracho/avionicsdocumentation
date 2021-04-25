@@ -4,6 +4,8 @@ title: Leitura e Escrita no SD
 sidebar_label: Leitura e Escrita no SD
 ---
 
+*Escrito por Gabriel Aleksandravicius*
+
 ## Objetivo
 O objetivo do teste de leitura e escrita do cartão SD é verificar a velocidade máxima com que conseguimos acessar, ler e salvar dados no cartão SD com o módulo utilizado. 
 
