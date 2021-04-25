@@ -6,7 +6,7 @@ sidebar_label: ECAD + MCAD
 
 Após já termos todas as placas prontas no Altium chega o momento de se fazer a integração delas com a estrutura mecânica. Quem modela isso é o subsistema Mecânica, da Sats. Eles fazem a estrutura de PMM tanto para nós quanto para a Eletrônica e Experimentos da Sats.
 
-## Versão preliminar
+## Versão preliminar #1
 A primeira versão da integração foi feita com as placas exportadas no formato PARASOLID. Veja os resultados abaixo:
 
 **Todas as placas**
@@ -38,6 +38,14 @@ A espessura das placas foi aumentada pra 1.6mm. Esse valor foi determinado como 
 
 Além disso, o modelo do GPS Featherweight foi alterado (a antena foi removida). Com isso modificado a board no Altium não contém mais a antena, evitando ter que excluí-la posteriormente na montagem completa no solid (o que estava exigindo muito da máquina).
 
+## Versão preliminar #2
+Essa versão possui todas as alterações comentadas anteriormente.
+
+![img](/img/docs/aurora/hardware/integracao/ecadmcad/ecadmcad5.JPG)
+
+Para as próximas versões:
+- Incluir antenas
+- Incluir cabos flat
 ## Versão final
 :::caution
 Em progresso!
