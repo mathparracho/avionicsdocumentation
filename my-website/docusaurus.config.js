@@ -45,7 +45,7 @@ module.exports = {
                         },
                         {
                             label: 'Software | v2',
-                            to: 'docs/aurorav2/software/git',
+                            to: 'docs/aurorav2/software/testes/funcionamento',
                         },
                         {
                             label: 'Hardware | v2',
