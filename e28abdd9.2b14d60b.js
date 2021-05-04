@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[56],{129:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/avionicsdocumentation/blog/welcome"},{"title":"Hello","permalink":"/avionicsdocumentation/blog/hello-world"}]}')}}]);
