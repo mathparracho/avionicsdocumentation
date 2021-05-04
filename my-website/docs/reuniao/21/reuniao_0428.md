@@ -57,7 +57,7 @@ sidebar_label: 28/04/21
     - App E: Aprimorar checklist do ano passado
     - App F: Pegar PDFs dos esquemáticos de cada uma das placas [daqui](https://drive.google.com/drive/folders/1mq6saoCNusugjQOlNaF5onNz2ehvm1er)
     - App G: Criar relatórios de teste com base no conteúdo que temos no site. Elaborar template com descrição do teste e status (passou, pendente, falhou, cancelado).
-    - App H: -
+    - App H: Fazer cálculo de eficiência do RBF
     - App I: -
     - App J: -
 
