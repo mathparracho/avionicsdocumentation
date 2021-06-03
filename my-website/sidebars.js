@@ -8,7 +8,7 @@ module.exports = {
                              'reuniao/21/0310r', 'reuniao/21/0317r', 'reuniao/21/0325r', 'reuniao/21/0331r',
                              'reuniao/21/0401i', 'reuniao/21/0407r', 'reuniao/21/0414r', 'reuniao/21/0422r',
                              'reuniao/21/0428r', 'reuniao/21/0503i', 'reuniao/21/0505r', 'reuniao/21/0519r',
-                             'reuniao/21/0526r'
+                             'reuniao/21/0526r', 'reuniao/21/0602r'
                     ],    
                 },
             ],
