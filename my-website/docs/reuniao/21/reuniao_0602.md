@@ -14,7 +14,7 @@ sidebar_label: 02/06/21
 
 - Pesquisou sobre válvulas esferas da Swagelok. Modelos considerados: [SS-43GS4-1466](https://products.swagelok.com/en/c/2-way-straight-pattern/p/SS-43GS4-1466?q=ball%20valve%201/2). Outros modelos não foram encontrados no site, porém a Swagelok Brasil disponibiliza: [SS-83KS8](https://products.swagelok.com/en/c/2-way-straight-pattern/p/SS-83KS8), 63TS8.
 
-- Pesquisou sobre válvulas solenóide: [https://tameson.com/valves/solenoid-valve/2-way/brass/hp-da014b010p-012dc-solenoid-valve-2way-014inch-brass-0p0-75bar-ptfe.html](https://tameson.com/valves/solenoid-valve/2-way/brass/hp-da014b010p-012dc-solenoid-valve-2way-014inch-brass-0p0-75bar-ptfe.html)
+- Pesquisou sobre válvulas solenóide: [HP-DA014B010P-012DC](https://tameson.com/valves/solenoid-valve/2-way/brass/hp-da014b010p-012dc-solenoid-valve-2way-014inch-brass-0p0-75bar-ptfe.html)
     - Questionar propulsão sobre a temperatura mínima da solenóide e valor.
 
 - Baixou placas do Quimera, porém não começou a revisão ainda.
