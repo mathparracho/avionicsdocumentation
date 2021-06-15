@@ -16,7 +16,7 @@ const features = [
         imageUrl: 'img/undraw_meeting.svg',
         description: (
           <>
-          Atas das reuniões semanais; tarefas; atividades...
+          Atas das reuniões semanais: informes, feedback, novas tarefas...
           </>
         ),
     },
@@ -29,7 +29,7 @@ const features = [
         imageUrl: 'img/undraw_hardware.svg',
         description: (
             <>
-        Boas práticas do Altium; esquemáticos, PCBs...
+        Boas práticas do Altium, esquemáticos, PCBs...
         </>
         ),
     },
@@ -42,16 +42,29 @@ const features = [
         imageUrl: 'img/undraw_software.svg',
         description: (
         <>
-        Trechos de código; sensores; boas práticas...  
+        Códigos de teste, protocolos, boas práticas...  
         </>
         ),
+    },
+    {
+      title: (
+        <a href="docs/ps/ps1">
+        Processo Seletivo
+      </a>
+      ),
+      imageUrl: 'img/undraw_ps.svg',
+      description: (
+        <>
+        Apresentação do subsistema  
+        </>
+      ),
     }
 ];
 
 function Feature({imageUrl, title, description}) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={clsx('col col--4 topicresume', styles.feature)}>
+    <div className={clsx('col col--3 topicresume', styles.feature)}>
       {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />

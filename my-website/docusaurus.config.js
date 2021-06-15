@@ -54,6 +54,10 @@ module.exports = {
                         {
                             label: 'Arquitetura | v3',
                             to: 'docs/quimera/arquitetura',
+                        },
+                        {
+                            label: 'Processo Seletivo',
+                            to: 'docs/ps/ps1',
                         }
                     ],
                 },
