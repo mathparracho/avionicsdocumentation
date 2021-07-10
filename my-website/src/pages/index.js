@@ -48,7 +48,7 @@ const features = [
     },
     {
       title: (
-        <a href="docs/ps/ps1">
+        <a href="docs/ps/2021.2">
         Processo Seletivo
       </a>
       ),

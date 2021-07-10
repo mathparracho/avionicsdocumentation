@@ -57,7 +57,7 @@ module.exports = {
                         },
                         {
                             label: 'Processo Seletivo',
-                            to: 'docs/ps/ps1',
+                            to: 'docs/ps/2021.2',
                         }
                     ],
                 },
