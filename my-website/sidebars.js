@@ -76,7 +76,7 @@ module.exports = {
             Outros: ['outros/dicasgerais', 'outros/ideias', 'outros/inventario', 'outros/styleguide'],
         },
         {
-            'Processo Seletivo': ['ps/ps1']
+            'Processo Seletivo': ['ps/2021.2']
         },
     ],
 };

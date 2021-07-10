@@ -55,7 +55,7 @@ const features = [
       imageUrl: 'img/undraw_ps.svg',
       description: (
         <>
-        Apresentação do subsistema  
+        Capacitações e Atividades  
         </>
       ),
     }
