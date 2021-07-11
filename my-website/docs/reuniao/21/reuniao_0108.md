@@ -69,6 +69,7 @@ slug: /
     - [Serial UART](https://www.circuitbasics.com/basics-uart-communication/);
 - Pesquisar sobre [Arduino](https://www.arduino.cc/reference/pt/);
 - Instalar PlatformIO;
+
 ### Gabriel
 - Elaborar nova forma de documentação;
 - Elaborar cronograma semanal do Aurora e do Quimera;
