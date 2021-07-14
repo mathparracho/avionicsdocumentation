@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const features = [
     {
         title: (
-          <a href="docs/">
+          <a href="docs/reuniao/21_1/0108r">
           Reuniões
           </a>
         ),
@@ -45,26 +45,13 @@ const features = [
         Códigos de teste, protocolos, boas práticas...  
         </>
         ),
-    },
-    {
-      title: (
-        <a href="docs/ps/2021.2">
-        Processo Seletivo
-      </a>
-      ),
-      imageUrl: 'img/undraw_ps.svg',
-      description: (
-        <>
-        Capacitações e Atividades  
-        </>
-      ),
     }
 ];
 
 function Feature({imageUrl, title, description}) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={clsx('col col--3 topicresume', styles.feature)}>
+    <div className={clsx('col col--4 topicresume', styles.feature)}>
       {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />

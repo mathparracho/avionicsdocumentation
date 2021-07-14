@@ -43,6 +43,12 @@ Essa versão possui todas as alterações comentadas anteriormente.
 
 ![img](/img/docs/aurora/hardware/integracao/ecadmcad/ecadmcad5.JPG)
 
+## Versão preliminar #3
+
+![img](/img/docs/aurora/hardware/integracao/ecadmcad/ecadmcad6.jpeg)
+
+![img](/img/docs/aurora/hardware/integracao/ecadmcad/ecadmcad7.jpeg)
+
 Para as próximas versões:
 - Incluir antenas
 - Incluir cabos flat

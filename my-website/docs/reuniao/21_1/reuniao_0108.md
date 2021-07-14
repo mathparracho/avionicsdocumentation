@@ -2,7 +2,6 @@
 id: 0108r
 title: Reunião 08/01/21
 sidebar_label: 08/01/21
-slug: /
 ---
 
 ## 1 - Boas vindas

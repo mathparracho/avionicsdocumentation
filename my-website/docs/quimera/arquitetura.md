@@ -4,6 +4,10 @@ title: Arquitetura
 sidebar_label: Arquitetura
 ---
 
+:::caution Atenção
+Página desatualizada!
+:::
+
 ## Introdução
 Após muitos anos desenvolvendo apenas foguetes de combustível sólido, em 2021 a Minerva Rockets estabeleceu como novo objetivo projetar, construir e, posteriormente, lançar um foguete híbrido. Para poder atender aos novos requisitos, mudanças se fazem necessárias na aviônica. O objetivo deste texto é apresentar os novos requisitos e as soluções encontradas pela equipe da aviônica para atendê-los.  
 

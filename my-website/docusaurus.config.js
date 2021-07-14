@@ -41,7 +41,7 @@ module.exports = {
                     items: [
                         {
                             label: 'Reuniões | v2',
-                            to: 'docs/',
+                            to: 'docs/reuniao/21_1/0108r',
                         },
                         {
                             label: 'Software | v2',
@@ -54,10 +54,6 @@ module.exports = {
                         {
                             label: 'Arquitetura | v3',
                             to: 'docs/quimera/arquitetura',
-                        },
-                        {
-                            label: 'Processo Seletivo',
-                            to: 'docs/ps/2021.2',
                         }
                     ],
                 },
@@ -76,13 +72,9 @@ module.exports = {
                             href: 'https://github.com/orgs/minervarockets/teams',
                         },
                         {
-                            label: 'Slack',
-                            href: 'https://minervarockets.slack.com/',
-                        },
-                        {
-                            label: 'Clickup',
-                            href: 'https://app.clickup.com/3004498/v/f/3168746/3007293?pr=3007293',
-                        },
+                            label: 'Trello',
+                            href: 'https://trello.com/b/nVc1Zq69/avi%C3%B4nica'
+                        }
                     ],
                 },
                 {
