@@ -57,6 +57,7 @@ sidebar_label: 08/01/21
 ### Todos
 - Mandar foto do horário de aulas;
 
+
 ### Daniel
 - Instalar PlatformIO e ver se funciona;
     - Validar componentes das placas;
