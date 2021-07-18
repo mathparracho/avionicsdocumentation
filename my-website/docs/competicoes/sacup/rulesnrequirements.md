@@ -9,7 +9,7 @@ sidebar_label: Rules & Requirements
 Esse texto é um resumo do [Rules & Requirements Document](https://www.soundingrocket.org/uploads/9/0/6/4/9064598/sa_cup_irec_rules___requirements_document_20210505_rev_h.pdf), que define as regras e requisitos que regem a participação na IREC (Intercollegiate Rocket Engineering Competition) da SA Cup, versão 05/05/21.
 
 ## Overview
-Equipes de estudantes competindo na IREC devem modelar, construir e lançar um foqueguete com um payload de até 8.8lb (4 kg), para um apogeu de alvo de 10.000 ft (3084 m) ou 30.000 (9144 m) ft acima no nível do chão (AGL). Apenas para 2021, a porção de voo da competição foi eliminada. 
+Equipes de estudantes competindo na IREC devem modelar, construir e lançar um foguete com um payload de até 8.8lb (4 kg), para um apogeu de alvo de 10.000 ft (3084 m) ou 30.000 (9144 m) ft acima no nível do chão (AGL). Apenas para 2021, a porção de voo da competição foi eliminada. 
 
 ### Categorias 
 -  Apogeu de 10.000 ft (3084 m) acima do nível do chão (AGL) com sistema de propulsão commercial-off-the-shelf híbrida ou sólida; 
