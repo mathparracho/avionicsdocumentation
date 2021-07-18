@@ -220,5 +220,5 @@ interruptNumber: the associated interrupt number.
 
 #### Desvantagens
 - São necessários muitos pinos na comunicação (um para cada Slave).
-- Não é ideal para longas distâncias.
+- Não é ideal para longas distâncias. O SPI é um protocolo focado em uso dentro do próprio aparelho, entre integrados ou entre placas internas. Para transpor distâncias mais longas, um repetidor geralmente é necessário por causa da atenuação devido ao aumento da resistência da linha de cabos longos
 - Não tem um sistema de detecção de escravos no hardware. Logo, o mestre pode enviar dados para um escravo que não existe e não saber disto.
