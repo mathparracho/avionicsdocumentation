@@ -12,7 +12,7 @@ Durante a execução de um software podem ser encontradas situações em que o s
 
 Uma máquina de estados finita ou autômato finito é um modelo matemático usado para representar programas de computadores ou circuitos lógicos. O conceito é concebido como uma máquina abstrata que deve estar em um de um número finito de estados. Por exemplo, uma porta possui apenas dois estados (aberta e fechada) e duas transições (abrir e fechar).
 
-![img](/img/docs/glossario/maquinadeestados1.jpg)
+![img](/img/docs/glossario/maquinadeestados/maquinadeestados1.jpg)
 
 ## Aplicação em software
 Durante a execução de um software nós temos diversas funções ocorrendo simultaneamente. Ao utilizarmos uma máquina de estados, podemos destacar as funções utilizadas em determinado estado e descartar as outras, de forma a alocação desnecessária de memória. 

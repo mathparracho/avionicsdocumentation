@@ -18,7 +18,7 @@ Git é uma ferramenta utilizada no **controle de versão** ou **versionamento**.
 
 Além dessas vantagens, o Git permite que você trabalhe em conjunto com outros desenvolvedores. Ele trabalha como um Sistema de Controle de Versão Distribuída (DVCS), o que significa que cada um dos usuários clona uma imagem do repositório e de seu histórico. Portanto, se o servidor desse repositório morrer e o trabalho for perdido, qualquer um dos usuários pode reverter a situação. Além disso, o DVCS permite que os repositórios remotos dos diferentes usuários trabalhem bem simultaneamente, garantindo diferentes dinâmicas de trabalho. Veremos uma forma de se fazer isso mais à frente na seção *Uso no Aurora v2*.
 
-![img](/img/docs/aurora/software/git/dvcs.png)
+![img](/img/docs/glossario/git/dvcs.png)
 
 Existe uma diferença básica na forma como o Git funciona em relação a outros VCSs. Muitos desses outros sistemas armazenam informação como uma lista de mudanças baseadas nos arquivos. Isso significa que eles armazenam a informação como um grupo de arquivos e as mudanças feitas neles ao longo do tempo - e por isso esse mecanismo é chamado de *delta-based version control*. Por outro lado, no Git a informação é pensada como uma série de fotos de determinados instantes do sistema. Cada vez que você faz um commit é tirada uma foto dos seus arquivos e armazenada uma referência daquela foto. Se não houve nenhuma mudança o Git não salva os mesmos arquivos de novo, mas sim um link para a versão desses arquivos já armazenada.
 
@@ -35,7 +35,7 @@ Outras características do Git:
 
 Podemos então dividir um projeto Git em três seções principais: **working tree** (diretório de trabalho), **staging area** (área de preparação) e o **Git directory** (diretório Git).
 
-![img](/img/docs/aurora/software/git/gitsections.png)
+![img](/img/docs/glossario/git/gitsections.png)
 
 A working tree, localizada no disco local, é onde os arquivos provenientes do banco de dados do diretório do Git ficam disponíveis pra que você trabalhe.
 
@@ -76,7 +76,7 @@ O repositório central (também chamado de *origin*) possui duas branches de exi
 
 Na branch master fica o código em estado aprovado para produção (utilizado pelos usuários). A branch develop é inicialmente um clone da branch master e serve como ramificação para as branches de desenvolvimento. A develop também é chamada de branch de integração porque nela são integradas todas as mudanças preparadas para o próximo release. Quando o código da develop atinge um ponto estável e está pronto para ser liberado, é feito um merge dessa branch na master. Por definição, cada vez que esse merge é feito temos uma nova versão do software em produção.
 
-![img](/img/docs/aurora/software/git/masterdevelop.png)
+![img](/img/docs/glossario/git/masterdevelop.png)
 
 ### Branches de Suporte
 Além das branches principais, o Git Worflow conta com algumas branches de suporte que permitem o desenvolvimento paralelo do time de devs, o acompanhamento das novas features e uma resolução rápida de bugs que surgem na master. Essas branches têm todas um tempo de vida limitado, pois são deletadas depois de terem sido integradas nas branches principais. São 3: **feature**, **release** e **hotfix**. Cada uma possui um propósito específico, uma branch específica da qual elas devem se originar e uma outra específica para a qual elas farão o merge.
@@ -86,7 +86,7 @@ As branchs de feature se originam a partir da develop e fazem o merge também na
 
 Essas branches são usadas no desenvolvimento das features que incorporarão o projeto em releases futuras. A branch de feature existe enquanto essa feature estiver em desenvolvimento e, uma vez terminada, deve ser mergeada na develop.
 
-![img](/img/docs/aurora/software/git/feature.png)
+![img](/img/docs/glossario/git/feature.png)
 
 #### Release branches
 As branches de release se originam a partir da develop e fazem o merge na develop e na master. A convenção do nome é release/[numerodaversao].
@@ -97,24 +97,24 @@ Criamos uma branch de release quando a develop já está praticamente finalizada
 
 Depois das eventuais mudanças terem sido feitas na branch de release, ela deve ser mergeada na master (pois teremos uma nova versão do software). Além disso, também deve ser mergeada na develop para que essa branch contenha todas as pequenas modificações feitas na release.
 
-![img](/img/docs/aurora/software/git/release.png)
+![img](/img/docs/glossario/git/release.png)
 
 #### Hotfix branches
 As branches de hotfix se originam a partir da master e fazem o merge na master e na develop. A convenção do nome é hotfix/[nomedofix].
 
 As branches de hotfix surgem da necessidade de se resolver rapidamente algum problema inesperado da branch master.
 
-![img](/img/docs/aurora/software/git/hotfix.png)
+![img](/img/docs/glossario/git/hotfix.png)
 
 ### Visão Geral
 A imagem abaixo reúne o fluxo de trabalho completo:
 
-![img](/img/docs/aurora/software/git/fullworkflow.png)
+![img](/img/docs/glossario/git/fullworkflow.png)
 
 ## Uso no Aurora v2
 O código necessário na aviônica é extensivo e deve compreender todos os sensores e módulos presentes no EPS e CDHS. Para isso, todos os membros se dedicam a alguma atividade e o Git Workflow é empregado. Temos branches de feature pra cada um dos módulos presentes nas placas.
 
-![img](/img/docs/aurora/software/git/workflowrockets.jpg)
+![img](/img/docs/glossario/git/workflowrockets.jpg)
 
 ## Extensões VS Code
 O VS Code já vem com todo o suporte necessário pra uso do Git e integração com o Github, porém algumas extensões podem ser instaladas para melhorar a experiência. As recomendadas são:
